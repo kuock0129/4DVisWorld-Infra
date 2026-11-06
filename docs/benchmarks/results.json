@@ -1,0 +1,2063 @@
+{
+  "created_at": "2026-11-06T09:46:59+00:00",
+  "host": {
+    "os": "Windows 11",
+    "cpu": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",
+    "python": "3.12.16"
+  },
+  "reference": "mujoco/rk4/0.25ms (reference)",
+  "configs": [
+    {
+      "label": "mujoco/euler/4ms",
+      "backend": "mujoco",
+      "version": "3.17.0",
+      "device": "cpu",
+      "config": {
+        "timestep": 0.004
+      },
+      "suite_sim_wall_s": 0.16061150000314228,
+      "analytic": [
+        {
+          "case": "free_fall",
+          "metric": "max position error over 1 s",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.01961999999998465,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.0035382999922148883,
+          "abs_err": 0.01961999999998465,
+          "rel_err": null
+        },
+        {
+          "case": "free_fall",
+          "metric": "time to drop 1 m",
+          "unit": "s",
+          "expected": 0.4515236409857309,
+          "measured": 0.4495238920011189,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.0035382999922148883,
+          "abs_err": 0.001999748984611971,
+          "rel_err": 0.004428890988401574
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.0)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0,
+          "params": {
+            "e": 0.0,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.006875200022477657,
+          "abs_err": 0.0,
+          "rel_err": null
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.3)",
+          "unit": "m",
+          "expected": 0.09,
+          "measured": 0.1266574822082806,
+          "params": {
+            "e": 0.3,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.005668800004059449,
+          "abs_err": 0.036657482208280606,
+          "rel_err": 0.4073053578697845
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.6)",
+          "unit": "m",
+          "expected": 0.36,
+          "measured": 0.3789166398945556,
+          "params": {
+            "e": 0.6,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.004815499996766448,
+          "abs_err": 0.01891663989455561,
+          "rel_err": 0.05254622192932114
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.9)",
+          "unit": "m",
+          "expected": 0.81,
+          "measured": 0.8109693570010519,
+          "params": {
+            "e": 0.9,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.0048906000156421214,
+          "abs_err": 0.0009693570010518293,
+          "rel_err": 0.0011967370383355917
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.2)",
+          "unit": "m",
+          "expected": 1.019367991845056,
+          "measured": 1.015454777540789,
+          "params": {
+            "mu": 0.2,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.010195899987593293,
+          "abs_err": 0.003913214304267054,
+          "rel_err": 0.00383886323248598
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.5)",
+          "unit": "m",
+          "expected": 0.4077471967380224,
+          "measured": 0.40401713986974414,
+          "params": {
+            "mu": 0.5,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.0065913999860640615,
+          "abs_err": 0.003730056868278264,
+          "rel_err": 0.009147964469452444
+        },
+        {
+          "case": "stack",
+          "metric": "top box drift over 3 s (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0028761421046190616,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.1078550000092946,
+          "abs_err": 0.0028761421046190616,
+          "rel_err": null
+        },
+        {
+          "case": "stack",
+          "metric": "max penetration (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0008736884311194015,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.1078550000092946,
+          "abs_err": 0.0008736884311194015,
+          "rel_err": null
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=1.0)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.000000931888772,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.005258099990896881,
+          "abs_err": 9.318887719267366e-07,
+          "rel_err": 9.318887719267366e-07
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=1.0)",
+          "unit": "m/s",
+          "expected": 1.0,
+          "measured": 1.000382810211601,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.005258099990896881,
+          "abs_err": 0.0003828102116010257,
+          "rel_err": 0.0003828102116010257
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=0.5)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000020318909109,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.0049226999981328845,
+          "abs_err": 2.031890910858536e-06,
+          "rel_err": 2.031890910858536e-06
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=0.5)",
+          "unit": "m/s",
+          "expected": 0.75,
+          "measured": 0.7561912819741595,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.0049226999981328845,
+          "abs_err": 0.006191281974159524,
+          "rel_err": 0.008255042632212698
+        }
+      ],
+      "consistency": {
+        "stack5": {
+          "max_pos": 0.0026874608165987635,
+          "rms_pos": 0.0001553650095385436,
+          "final_pos": 2.1758891404299624e-14,
+          "max_rot_deg": 0.0,
+          "worst_body": "b4",
+          "sim_wall_s": 0.10452019999502227
+        },
+        "bounce_e0.6": {
+          "max_pos": 0.010886996652572034,
+          "rms_pos": 0.0034669082200264505,
+          "final_pos": 0.010886996652572034,
+          "max_rot_deg": 0.0,
+          "worst_body": "ball",
+          "sim_wall_s": 0.0055235000036191195
+        },
+        "slide_mu0.5": {
+          "max_pos": 0.0057195870557876765,
+          "rms_pos": 0.002753156938036134,
+          "final_pos": 0.003911874638832469,
+          "max_rot_deg": 1.6049147194406088,
+          "worst_body": "box",
+          "sim_wall_s": 0.009579599980497733
+        },
+        "tumble": {
+          "max_pos": 0.7909991815741009,
+          "rms_pos": 0.204269909836877,
+          "final_pos": 0.14057124669844312,
+          "max_rot_deg": 82.68923198848121,
+          "worst_body": "b3",
+          "sim_wall_s": 0.06188619998283684
+        },
+        "remove_support/baseline": {
+          "max_pos": 0.00022369480022527144,
+          "rms_pos": 2.1654979229197396e-05,
+          "final_pos": 1.0852430069867013e-14,
+          "max_rot_deg": 0.0,
+          "worst_body": "support",
+          "sim_wall_s": 0.03078339999774471
+        },
+        "remove_support/causal": {
+          "max_pos": 0.005850396157997151,
+          "rms_pos": 0.0007877681218609853,
+          "final_pos": 3.279329730684495e-14,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.01906680001411587
+        }
+      }
+    },
+    {
+      "label": "mujoco/euler/2ms (default)",
+      "backend": "mujoco",
+      "version": "3.17.0",
+      "device": "cpu",
+      "config": {
+        "timestep": 0.002
+      },
+      "suite_sim_wall_s": 0.2406780000019353,
+      "analytic": [
+        {
+          "case": "free_fall",
+          "metric": "max position error over 1 s",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.009809999999994545,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.0041185999871231616,
+          "abs_err": 0.009809999999994545,
+          "rel_err": null
+        },
+        {
+          "case": "free_fall",
+          "metric": "time to drop 1 m",
+          "unit": "s",
+          "expected": 0.4515236409857309,
+          "measured": 0.45052061903437945,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.0041185999871231616,
+          "abs_err": 0.001003021951351435,
+          "rel_err": 0.0022214162455850956
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.0)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0,
+          "params": {
+            "e": 0.0,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.008444800012512133,
+          "abs_err": 0.0,
+          "rel_err": null
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.3)",
+          "unit": "m",
+          "expected": 0.09,
+          "measured": 0.13081166074012213,
+          "params": {
+            "e": 0.3,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.006982299993978813,
+          "abs_err": 0.04081166074012213,
+          "rel_err": 0.4534628971124681
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.6)",
+          "unit": "m",
+          "expected": 0.36,
+          "measured": 0.3812241592191261,
+          "params": {
+            "e": 0.6,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.005619300005491823,
+          "abs_err": 0.021224159219126126,
+          "rel_err": 0.05895599783090591
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.9)",
+          "unit": "m",
+          "expected": 0.81,
+          "measured": 0.8106297640572121,
+          "params": {
+            "e": 0.9,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.005629199993563816,
+          "abs_err": 0.0006297640572120455,
+          "rel_err": 0.0007774864903852414
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.2)",
+          "unit": "m",
+          "expected": 1.019367991845056,
+          "measured": 1.0174465739258027,
+          "params": {
+            "mu": 0.2,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.016005400015274063,
+          "abs_err": 0.0019214179192532654,
+          "rel_err": 0.0018849109787874535
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.5)",
+          "unit": "m",
+          "expected": 0.4077471967380224,
+          "measured": 0.4059368049451092,
+          "params": {
+            "mu": 0.5,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.010580800008028746,
+          "abs_err": 0.0018103917929132018,
+          "rel_err": 0.004439985872119628
+        },
+        {
+          "case": "stack",
+          "metric": "top box drift over 3 s (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0006519090871441868,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.17080520000308752,
+          "abs_err": 0.0006519090871441868,
+          "rel_err": null
+        },
+        {
+          "case": "stack",
+          "metric": "max penetration (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.00020387093038959359,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.17080520000308752,
+          "abs_err": 0.00020387093038959359,
+          "rel_err": null
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=1.0)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000020949945105,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006251999991945922,
+          "abs_err": 2.094994510537518e-06,
+          "rel_err": 2.094994510537518e-06
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=1.0)",
+          "unit": "m/s",
+          "expected": 1.0,
+          "measured": 0.9989791240275594,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006251999991945922,
+          "abs_err": 0.0010208759724406047,
+          "rel_err": 0.0010208759724406047
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=0.5)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 0.9999997140048651,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006240399990929291,
+          "abs_err": 2.8599513490767947e-07,
+          "rel_err": 2.8599513490767947e-07
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=0.5)",
+          "unit": "m/s",
+          "expected": 0.75,
+          "measured": 0.7638990278301377,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006240399990929291,
+          "abs_err": 0.013899027830137745,
+          "rel_err": 0.018532037106850325
+        }
+      ],
+      "consistency": {
+        "stack5": {
+          "max_pos": 0.0004834693685128455,
+          "rms_pos": 3.021614490761069e-05,
+          "final_pos": 2.7392679858549868e-11,
+          "max_rot_deg": 0.0,
+          "worst_body": "b4",
+          "sim_wall_s": 0.17301529998076148
+        },
+        "bounce_e0.6": {
+          "max_pos": 0.005638512518732985,
+          "rms_pos": 0.00258887291290979,
+          "final_pos": 0.005638512518732985,
+          "max_rot_deg": 0.0,
+          "worst_body": "ball",
+          "sim_wall_s": 0.0071026000077836215
+        },
+        "slide_mu0.5": {
+          "max_pos": 0.005540797868089552,
+          "rms_pos": 0.0016118141746407273,
+          "final_pos": 0.0019922095780022797,
+          "max_rot_deg": 1.379672993739796,
+          "worst_body": "box",
+          "sim_wall_s": 0.01123360000201501
+        },
+        "tumble": {
+          "max_pos": 0.44434478417675316,
+          "rms_pos": 0.07568734940377168,
+          "final_pos": 0.03959547476458867,
+          "max_rot_deg": 60.59429768319914,
+          "worst_body": "b3",
+          "sim_wall_s": 0.09520289997453801
+        },
+        "remove_support/baseline": {
+          "max_pos": 0.00011950129993101855,
+          "rms_pos": 1.1457760233711165e-05,
+          "final_pos": 2.858824413088008e-15,
+          "max_rot_deg": 0.0,
+          "worst_body": "support",
+          "sim_wall_s": 0.056571499997517094
+        },
+        "remove_support/causal": {
+          "max_pos": 0.0024330344386722935,
+          "rms_pos": 0.00039033081020797974,
+          "final_pos": 5.3915223860346806e-14,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.030840199993690476
+        }
+      }
+    },
+    {
+      "label": "mujoco/euler/1ms",
+      "backend": "mujoco",
+      "version": "3.17.0",
+      "device": "cpu",
+      "config": {
+        "timestep": 0.001
+      },
+      "suite_sim_wall_s": 0.4087887999776285,
+      "analytic": [
+        {
+          "case": "free_fall",
+          "metric": "max position error over 1 s",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.004904999999969739,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.005169200012460351,
+          "abs_err": 0.004904999999969739,
+          "rel_err": null
+        },
+        {
+          "case": "free_fall",
+          "metric": "time to drop 1 m",
+          "unit": "s",
+          "expected": 0.4515236409857309,
+          "measured": 0.45102064191899205,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.005169200012460351,
+          "abs_err": 0.0005029990667388407,
+          "rel_err": 0.0011140038329792272
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.0)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0,
+          "params": {
+            "e": 0.0,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.012419999984558672,
+          "abs_err": 0.0,
+          "rel_err": null
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.3)",
+          "unit": "m",
+          "expected": 0.09,
+          "measured": 0.13294748384317173,
+          "params": {
+            "e": 0.3,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.010875400010263547,
+          "abs_err": 0.042947483843171735,
+          "rel_err": 0.4771942649241304
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.6)",
+          "unit": "m",
+          "expected": 0.36,
+          "measured": 0.3822624051179343,
+          "params": {
+            "e": 0.6,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.008338799991179258,
+          "abs_err": 0.022262405117934314,
+          "rel_err": 0.06184001421648421
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.9)",
+          "unit": "m",
+          "expected": 0.81,
+          "measured": 0.8109459515504571,
+          "params": {
+            "e": 0.9,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.008201600023312494,
+          "abs_err": 0.0009459515504570692,
+          "rel_err": 0.0011678414203173694
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.2)",
+          "unit": "m",
+          "expected": 1.019367991845056,
+          "measured": 1.0184769568744494,
+          "params": {
+            "mu": 0.2,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.02642459998605773,
+          "abs_err": 0.0008910349706066079,
+          "rel_err": 0.0008741053061650823
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.5)",
+          "unit": "m",
+          "expected": 0.4077471967380224,
+          "measured": 0.4073270394054832,
+          "params": {
+            "mu": 0.5,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.01616150001063943,
+          "abs_err": 0.00042015733253919496,
+          "rel_err": 0.0010304358580523758
+        },
+        {
+          "case": "stack",
+          "metric": "top box drift over 3 s (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0004298919961748249,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.30592640000395477,
+          "abs_err": 0.0004298919961748249,
+          "rel_err": null
+        },
+        {
+          "case": "stack",
+          "metric": "max penetration (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.00013365661259706618,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.30592640000395477,
+          "abs_err": 0.00013365661259706618,
+          "rel_err": null
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=1.0)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000013150236025,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.007683099975110963,
+          "abs_err": 1.3150236024550566e-06,
+          "rel_err": 1.3150236024550566e-06
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=1.0)",
+          "unit": "m/s",
+          "expected": 1.0,
+          "measured": 0.9984543030680995,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.007683099975110963,
+          "abs_err": 0.001545696931900542,
+          "rel_err": 0.001545696931900542
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=0.5)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000002072163512,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.007588199980091304,
+          "abs_err": 2.0721635118903237e-07,
+          "rel_err": 2.0721635118903237e-07
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=0.5)",
+          "unit": "m/s",
+          "expected": 0.75,
+          "measured": 0.767571099839218,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.007588199980091304,
+          "abs_err": 0.017571099839218007,
+          "rel_err": 0.023428133118957344
+        }
+      ],
+      "consistency": {
+        "stack5": {
+          "max_pos": 0.0002044944209286248,
+          "rms_pos": 1.3265964593798946e-05,
+          "final_pos": 4.6537666972051294e-15,
+          "max_rot_deg": 0.0,
+          "worst_body": "b4",
+          "sim_wall_s": 0.314639200019883
+        },
+        "bounce_e0.6": {
+          "max_pos": 0.008767786278270878,
+          "rms_pos": 0.002895201731123541,
+          "final_pos": 0.005913813402811247,
+          "max_rot_deg": 0.0,
+          "worst_body": "ball",
+          "sim_wall_s": 0.008794599998509511
+        },
+        "slide_mu0.5": {
+          "max_pos": 0.002608867314740279,
+          "rms_pos": 0.0006287328908887234,
+          "final_pos": 0.0006019751128600315,
+          "max_rot_deg": 0.7082545502659174,
+          "worst_body": "box",
+          "sim_wall_s": 0.019006399990757927
+        },
+        "tumble": {
+          "max_pos": 0.2245653006881521,
+          "rms_pos": 0.039760449425215436,
+          "final_pos": 0.02378429715501651,
+          "max_rot_deg": 34.69275861447874,
+          "worst_body": "b3",
+          "sim_wall_s": 0.16024520000792108
+        },
+        "remove_support/baseline": {
+          "max_pos": 0.00012578511921684798,
+          "rms_pos": 9.44736768956786e-06,
+          "final_pos": 6.717257033100905e-15,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.11653090000618249
+        },
+        "remove_support/causal": {
+          "max_pos": 0.0012165178275551358,
+          "rms_pos": 0.00019523263118149302,
+          "final_pos": 1.4502360575886866e-14,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.057196500012651086
+        }
+      }
+    },
+    {
+      "label": "mujoco/euler/0.5ms",
+      "backend": "mujoco",
+      "version": "3.17.0",
+      "device": "cpu",
+      "config": {
+        "timestep": 0.0005
+      },
+      "suite_sim_wall_s": 0.7417515999113675,
+      "analytic": [
+        {
+          "case": "free_fall",
+          "metric": "max position error over 1 s",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0024524999999853137,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.007059399998979643,
+          "abs_err": 0.0024524999999853137,
+          "rel_err": null
+        },
+        {
+          "case": "free_fall",
+          "metric": "time to drop 1 m",
+          "unit": "s",
+          "expected": 0.4515236409857309,
+          "measured": 0.45127106981567155,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.007059399998979643,
+          "abs_err": 0.0002525711700593347,
+          "rel_err": 0.0005593752954063296
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.0)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0,
+          "params": {
+            "e": 0.0,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.020180499996058643,
+          "abs_err": 0.0,
+          "rel_err": null
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.3)",
+          "unit": "m",
+          "expected": 0.09,
+          "measured": 0.1283140349299365,
+          "params": {
+            "e": 0.3,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.016579599992837757,
+          "abs_err": 0.038314034929936513,
+          "rel_err": 0.42571149922151685
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.6)",
+          "unit": "m",
+          "expected": 0.36,
+          "measured": 0.3755074893059217,
+          "params": {
+            "e": 0.6,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.011457799992058426,
+          "abs_err": 0.015507489305921718,
+          "rel_err": 0.043076359183115885
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.9)",
+          "unit": "m",
+          "expected": 0.81,
+          "measured": 0.8062088421550974,
+          "params": {
+            "e": 0.9,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.013649300002725795,
+          "abs_err": 0.003791157844902693,
+          "rel_err": 0.0046804417838304845
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.2)",
+          "unit": "m",
+          "expected": 1.019367991845056,
+          "measured": 1.01897862900402,
+          "params": {
+            "mu": 0.2,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.047943999990820885,
+          "abs_err": 0.0003893628410360783,
+          "rel_err": 0.0003819649470563929
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.5)",
+          "unit": "m",
+          "expected": 0.4077471967380224,
+          "measured": 0.4079031875458831,
+          "params": {
+            "mu": 0.5,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.029722999985096976,
+          "abs_err": 0.0001559908078607175,
+          "rel_err": 0.0003825674562784097
+        },
+        {
+          "case": "stack",
+          "metric": "top box drift over 3 s (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.00042153240428222105,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.5747357999789529,
+          "abs_err": 0.00042153240428222105,
+          "rel_err": null
+        },
+        {
+          "case": "stack",
+          "metric": "max penetration (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.00013365661259748252,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.5747357999789529,
+          "abs_err": 0.00013365661259748252,
+          "rel_err": null
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=1.0)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.000000530143536,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.01047039998229593,
+          "abs_err": 5.301435359594819e-07,
+          "rel_err": 5.301435359594819e-07
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=1.0)",
+          "unit": "m/s",
+          "expected": 1.0,
+          "measured": 0.9984162386327617,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.01047039998229593,
+          "abs_err": 0.0015837613672382567,
+          "rel_err": 0.0015837613672382567
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=0.5)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000001249237778,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.00995179999154061,
+          "abs_err": 1.249237777667389e-07,
+          "rel_err": 1.249237777667389e-07
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=0.5)",
+          "unit": "m/s",
+          "expected": 0.75,
+          "measured": 0.7694677856760841,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.00995179999154061,
+          "abs_err": 0.019467785676084093,
+          "rel_err": 0.025957047568112124
+        }
+      ],
+      "consistency": {
+        "stack5": {
+          "max_pos": 8.35716339171455e-05,
+          "rms_pos": 5.528904209412217e-06,
+          "final_pos": 6.094867159972487e-15,
+          "max_rot_deg": 0.0,
+          "worst_body": "b4",
+          "sim_wall_s": 0.5728529999905732
+        },
+        "bounce_e0.6": {
+          "max_pos": 0.0037659158458385467,
+          "rms_pos": 0.001111274009954216,
+          "final_pos": 0.0037659158458385467,
+          "max_rot_deg": 0.0,
+          "worst_body": "ball",
+          "sim_wall_s": 0.011976099980529398
+        },
+        "slide_mu0.5": {
+          "max_pos": 0.002735741008440968,
+          "rms_pos": 0.0005293406582031756,
+          "final_pos": 2.5826969062114905e-05,
+          "max_rot_deg": 0.5957499479875502,
+          "worst_body": "box",
+          "sim_wall_s": 0.03497139998944476
+        },
+        "tumble": {
+          "max_pos": 0.12139724198385358,
+          "rms_pos": 0.023963650560038977,
+          "final_pos": 0.033840449849088294,
+          "max_rot_deg": 19.983338820167713,
+          "worst_body": "ball",
+          "sim_wall_s": 0.3031298999849241
+        },
+        "remove_support/baseline": {
+          "max_pos": 5.457306199008194e-05,
+          "rms_pos": 4.097876674970492e-06,
+          "final_pos": 9.603444700875436e-15,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.22944049999932759
+        },
+        "remove_support/causal": {
+          "max_pos": 0.0006082588990618809,
+          "rms_pos": 9.736140276446965e-05,
+          "final_pos": 2.7672327537288964e-14,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.10841169999912381
+        }
+      }
+    },
+    {
+      "label": "mujoco/implicitfast/2ms",
+      "backend": "mujoco",
+      "version": "3.17.0",
+      "device": "cpu",
+      "config": {
+        "timestep": 0.002,
+        "integrator": "implicitfast"
+      },
+      "suite_sim_wall_s": 0.25352070000371896,
+      "analytic": [
+        {
+          "case": "free_fall",
+          "metric": "max position error over 1 s",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.009809999999994545,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.0042492999928072095,
+          "abs_err": 0.009809999999994545,
+          "rel_err": null
+        },
+        {
+          "case": "free_fall",
+          "metric": "time to drop 1 m",
+          "unit": "s",
+          "expected": 0.4515236409857309,
+          "measured": 0.45052061903437945,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.0042492999928072095,
+          "abs_err": 0.001003021951351435,
+          "rel_err": 0.0022214162455850956
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.0)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0,
+          "params": {
+            "e": 0.0,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.009169500001007691,
+          "abs_err": 0.0,
+          "rel_err": null
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.3)",
+          "unit": "m",
+          "expected": 0.09,
+          "measured": 0.13081166074012227,
+          "params": {
+            "e": 0.3,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.007787900016410276,
+          "abs_err": 0.04081166074012227,
+          "rel_err": 0.4534628971124697
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.6)",
+          "unit": "m",
+          "expected": 0.36,
+          "measured": 0.3812241592191261,
+          "params": {
+            "e": 0.6,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.00605830000131391,
+          "abs_err": 0.021224159219126126,
+          "rel_err": 0.05895599783090591
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.9)",
+          "unit": "m",
+          "expected": 0.81,
+          "measured": 0.8106297640572158,
+          "params": {
+            "e": 0.9,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.006370500021148473,
+          "abs_err": 0.0006297640572157093,
+          "rel_err": 0.0007774864903897645
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.2)",
+          "unit": "m",
+          "expected": 1.019367991845056,
+          "measured": 1.0174465742918035,
+          "params": {
+            "mu": 0.2,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.016425599984358996,
+          "abs_err": 0.0019214175532524802,
+          "rel_err": 0.0018849106197406833
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.5)",
+          "unit": "m",
+          "expected": 0.4077471967380224,
+          "measured": 0.40593680494510864,
+          "params": {
+            "mu": 0.5,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.009740900015458465,
+          "abs_err": 0.001810391792913757,
+          "rel_err": 0.00443998587212099
+        },
+        {
+          "case": "stack",
+          "metric": "top box drift over 3 s (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0008878681008614997,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.1815119999810122,
+          "abs_err": 0.0008878681008614997,
+          "rel_err": null
+        },
+        {
+          "case": "stack",
+          "metric": "max penetration (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0002555774804946509,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.1815119999810122,
+          "abs_err": 0.0002555774804946509,
+          "rel_err": null
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=1.0)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 0.9999999999999999,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006087399990065023,
+          "abs_err": 1.1102230246251565e-16,
+          "rel_err": 1.1102230246251565e-16
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=1.0)",
+          "unit": "m/s",
+          "expected": 1.0,
+          "measured": 0.9989783749220424,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006087399990065023,
+          "abs_err": 0.0010216250779575553,
+          "rel_err": 0.0010216250779575553
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=0.5)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 0.9999999999999998,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006119300000136718,
+          "abs_err": 2.220446049250313e-16,
+          "rel_err": 2.220446049250313e-16
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=0.5)",
+          "unit": "m/s",
+          "expected": 0.75,
+          "measured": 0.7638995785166282,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006119300000136718,
+          "abs_err": 0.013899578516628153,
+          "rel_err": 0.018532771355504202
+        }
+      ],
+      "consistency": {
+        "stack5": {
+          "max_pos": 0.0007267756652894475,
+          "rms_pos": 5.327999268594583e-05,
+          "final_pos": 1.5089512735386662e-09,
+          "max_rot_deg": 0.0,
+          "worst_body": "b3",
+          "sim_wall_s": 0.18027410001377575
+        },
+        "bounce_e0.6": {
+          "max_pos": 0.00563851251873182,
+          "rms_pos": 0.002588872912909691,
+          "final_pos": 0.00563851251873182,
+          "max_rot_deg": 0.0,
+          "worst_body": "ball",
+          "sim_wall_s": 0.006922200002009049
+        },
+        "slide_mu0.5": {
+          "max_pos": 0.005540797868089971,
+          "rms_pos": 0.001611814174640747,
+          "final_pos": 0.001992209577946158,
+          "max_rot_deg": 1.379672993739796,
+          "worst_body": "box",
+          "sim_wall_s": 0.011293999996269122
+        },
+        "tumble": {
+          "max_pos": 0.4001165124286628,
+          "rms_pos": 0.0686741968279845,
+          "final_pos": 0.043824681406119635,
+          "max_rot_deg": 57.438638879058814,
+          "worst_body": "b3",
+          "sim_wall_s": 0.09703509998507798
+        },
+        "remove_support/baseline": {
+          "max_pos": 0.0001195012999310463,
+          "rms_pos": 1.1457760234176076e-05,
+          "final_pos": 5.49079430609208e-10,
+          "max_rot_deg": 0.0,
+          "worst_body": "support",
+          "sim_wall_s": 0.06143289999454282
+        },
+        "remove_support/causal": {
+          "max_pos": 0.0024330344386722935,
+          "rms_pos": 0.0003903308202803842,
+          "final_pos": 1.369405412274649e-07,
+          "max_rot_deg": 3.5858493142567087e-05,
+          "worst_body": "box",
+          "sim_wall_s": 0.02972679998492822
+        }
+      }
+    },
+    {
+      "label": "mujoco/rk4/2ms",
+      "backend": "mujoco",
+      "version": "3.17.0",
+      "device": "cpu",
+      "config": {
+        "timestep": 0.002,
+        "integrator": "RK4"
+      },
+      "suite_sim_wall_s": 0.33108490001177415,
+      "analytic": [
+        {
+          "case": "free_fall",
+          "metric": "max position error over 1 s",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 1.3322676295501878e-14,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.0059040999913122505,
+          "abs_err": 1.3322676295501878e-14,
+          "rel_err": null
+        },
+        {
+          "case": "free_fall",
+          "metric": "time to drop 1 m",
+          "unit": "s",
+          "expected": 0.4515236409857309,
+          "measured": 0.4515217759655676,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.0059040999913122505,
+          "abs_err": 1.8650201633052532e-06,
+          "rel_err": 4.13050390724545e-06
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.0)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0,
+          "params": {
+            "e": 0.0,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.012898300017695874,
+          "abs_err": 0.0,
+          "rel_err": null
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.3)",
+          "unit": "m",
+          "expected": 0.09,
+          "measured": 0.13120883117096147,
+          "params": {
+            "e": 0.3,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.010705699998652562,
+          "abs_err": 0.04120883117096147,
+          "rel_err": 0.4578759018995719
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.6)",
+          "unit": "m",
+          "expected": 0.36,
+          "measured": 0.37852480513518383,
+          "params": {
+            "e": 0.6,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.008144799998262897,
+          "abs_err": 0.01852480513518384,
+          "rel_err": 0.05145779204217734
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.9)",
+          "unit": "m",
+          "expected": 0.81,
+          "measured": 0.8076748950002454,
+          "params": {
+            "e": 0.9,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.0083681000105571,
+          "abs_err": 0.00232510499975469,
+          "rel_err": 0.0028704999996971483
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.2)",
+          "unit": "m",
+          "expected": 1.019367991845056,
+          "measured": 1.0194688051306198,
+          "params": {
+            "mu": 0.2,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.02247470000293106,
+          "abs_err": 0.00010081328556377223,
+          "rel_err": 9.889783313806056e-05
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.5)",
+          "unit": "m",
+          "expected": 0.4077471967380224,
+          "measured": 0.408156526196812,
+          "params": {
+            "mu": 0.5,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.014748699992196634,
+          "abs_err": 0.0004093294587895757,
+          "rel_err": 0.0010038804976814344
+        },
+        {
+          "case": "stack",
+          "metric": "top box drift over 3 s (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.00043766974600911723,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.23077600001124665,
+          "abs_err": 0.00043766974600911723,
+          "rel_err": null
+        },
+        {
+          "case": "stack",
+          "metric": "max penetration (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.00013365661260106299,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.23077600001124665,
+          "abs_err": 0.00013365661260106299,
+          "rel_err": null
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=1.0)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000012691129834,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.008757100004004315,
+          "abs_err": 1.2691129833708459e-06,
+          "rel_err": 1.2691129833708459e-06
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=1.0)",
+          "unit": "m/s",
+          "expected": 1.0,
+          "measured": 0.998285336090839,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.008757100004004315,
+          "abs_err": 0.0017146639091609739,
+          "rel_err": 0.0017146639091609739
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=0.5)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000002135870303,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.00830739998491481,
+          "abs_err": 2.1358703028440118e-07,
+          "rel_err": 2.1358703028440118e-07
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=0.5)",
+          "unit": "m/s",
+          "expected": 0.75,
+          "measured": 0.7693679408603875,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.00830739998491481,
+          "abs_err": 0.01936794086038751,
+          "rel_err": 0.02582392114718335
+        }
+      ],
+      "consistency": {
+        "stack5": {
+          "max_pos": 0.00020818021308144363,
+          "rms_pos": 1.363374955423164e-05,
+          "final_pos": 6.158439847396276e-15,
+          "max_rot_deg": 0.0,
+          "worst_body": "b4",
+          "sim_wall_s": 0.23022069997387007
+        },
+        "bounce_e0.6": {
+          "max_pos": 0.004214923393571407,
+          "rms_pos": 0.0011299994768532494,
+          "final_pos": 0.004214923393571407,
+          "max_rot_deg": 0.0,
+          "worst_body": "ball",
+          "sim_wall_s": 0.010764500009827316
+        },
+        "slide_mu0.5": {
+          "max_pos": 0.0029437798861225626,
+          "rms_pos": 0.0005350648699890511,
+          "final_pos": 0.00022751168816559364,
+          "max_rot_deg": 0.49523259221814747,
+          "worst_body": "box",
+          "sim_wall_s": 0.017111399996792898
+        },
+        "tumble": {
+          "max_pos": 0.06694257544797864,
+          "rms_pos": 0.008483282070501919,
+          "final_pos": 0.0183900914203854,
+          "max_rot_deg": 14.710565768144459,
+          "worst_body": "ball",
+          "sim_wall_s": 0.1387862999981735
+        },
+        "remove_support/baseline": {
+          "max_pos": 6.146759986228045e-05,
+          "rms_pos": 5.765326761886774e-06,
+          "final_pos": 6.994405065774722e-15,
+          "max_rot_deg": 0.0,
+          "worst_body": "support",
+          "sim_wall_s": 0.08394989999942482
+        },
+        "remove_support/causal": {
+          "max_pos": 0.00031488803971531365,
+          "rms_pos": 3.483172431208533e-05,
+          "final_pos": 2.563386228184006e-14,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.0420690999890212
+        }
+      }
+    },
+    {
+      "label": "mujoco/euler/2ms/elliptic",
+      "backend": "mujoco",
+      "version": "3.17.0",
+      "device": "cpu",
+      "config": {
+        "timestep": 0.002,
+        "cone": "elliptic"
+      },
+      "suite_sim_wall_s": 0.23489969994989224,
+      "analytic": [
+        {
+          "case": "free_fall",
+          "metric": "max position error over 1 s",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.009809999999994545,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.004117199976462871,
+          "abs_err": 0.009809999999994545,
+          "rel_err": null
+        },
+        {
+          "case": "free_fall",
+          "metric": "time to drop 1 m",
+          "unit": "s",
+          "expected": 0.4515236409857309,
+          "measured": 0.45052061903437945,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.004117199976462871,
+          "abs_err": 0.001003021951351435,
+          "rel_err": 0.0022214162455850956
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.0)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0,
+          "params": {
+            "e": 0.0,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.008585099974879995,
+          "abs_err": 0.0,
+          "rel_err": null
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.3)",
+          "unit": "m",
+          "expected": 0.09,
+          "measured": 0.1353714498038864,
+          "params": {
+            "e": 0.3,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.00678419999894686,
+          "abs_err": 0.04537144980388641,
+          "rel_err": 0.5041272200431823
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.6)",
+          "unit": "m",
+          "expected": 0.36,
+          "measured": 0.3874348320111718,
+          "params": {
+            "e": 0.6,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.005811699986224994,
+          "abs_err": 0.027434832011171806,
+          "rel_err": 0.07620786669769947
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.9)",
+          "unit": "m",
+          "expected": 0.81,
+          "measured": 0.8143072636899803,
+          "params": {
+            "e": 0.9,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.006301800021901727,
+          "abs_err": 0.004307263689980245,
+          "rel_err": 0.005317609493802771
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.2)",
+          "unit": "m",
+          "expected": 1.019367991845056,
+          "measured": 1.0174850054977882,
+          "params": {
+            "mu": 0.2,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.015899399993941188,
+          "abs_err": 0.001882986347267801,
+          "rel_err": 0.001847209606669713
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.5)",
+          "unit": "m",
+          "expected": 0.4077471967380224,
+          "measured": 0.4060327994330729,
+          "params": {
+            "mu": 0.5,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.010251599975163117,
+          "abs_err": 0.0017143973049494887,
+          "rel_err": 0.004204559390388622
+        },
+        {
+          "case": "stack",
+          "metric": "top box drift over 3 s (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0021328359787214923,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.16482150001684204,
+          "abs_err": 0.0021328359787214923,
+          "rel_err": null
+        },
+        {
+          "case": "stack",
+          "metric": "max penetration (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0005928208915982613,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.16482150001684204,
+          "abs_err": 0.0005928208915982613,
+          "rel_err": null
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=1.0)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000000000000002,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006321599998045713,
+          "abs_err": 2.220446049250313e-16,
+          "rel_err": 2.220446049250313e-16
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=1.0)",
+          "unit": "m/s",
+          "expected": 1.0,
+          "measured": 0.9989614385962001,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006321599998045713,
+          "abs_err": 0.0010385614037998758,
+          "rel_err": 0.0010385614037998758
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=0.5)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 0.9999999999999998,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006005600007483736,
+          "abs_err": 2.220446049250313e-16,
+          "rel_err": 2.220446049250313e-16
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=0.5)",
+          "unit": "m/s",
+          "expected": 0.75,
+          "measured": 0.7685806002391399,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.006005600007483736,
+          "abs_err": 0.018580600239139877,
+          "rel_err": 0.024774133652186503
+        }
+      ],
+      "consistency": {
+        "stack5": {
+          "max_pos": 0.0017616831356334073,
+          "rms_pos": 0.00106054872963091,
+          "final_pos": 0.0016252515383448074,
+          "max_rot_deg": 0.0,
+          "worst_body": "b4",
+          "sim_wall_s": 0.167231899977196
+        },
+        "bounce_e0.6": {
+          "max_pos": 0.02077348928079388,
+          "rms_pos": 0.006242110948235371,
+          "final_pos": 0.009658527817385604,
+          "max_rot_deg": 0.0,
+          "worst_body": "ball",
+          "sim_wall_s": 0.007148400007281452
+        },
+        "slide_mu0.5": {
+          "max_pos": 0.0021409677994412737,
+          "rms_pos": 0.0012210436528584231,
+          "final_pos": 0.0018983822132662917,
+          "max_rot_deg": 0.6558017902038634,
+          "worst_body": "box",
+          "sim_wall_s": 0.011891899979673326
+        },
+        "tumble": {
+          "max_pos": 0.11009723666870182,
+          "rms_pos": 0.018219279148892573,
+          "final_pos": 0.0060178211132732775,
+          "max_rot_deg": 9.773948206102485,
+          "worst_body": "b3",
+          "sim_wall_s": 0.09517880002385937
+        },
+        "remove_support/baseline": {
+          "max_pos": 0.00024736430972283063,
+          "rms_pos": 0.00010747792365702954,
+          "final_pos": 0.00017093826565989234,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.05599560000700876
+        },
+        "remove_support/causal": {
+          "max_pos": 0.0024330344386722935,
+          "rms_pos": 0.0003866336797128292,
+          "final_pos": 5.75778984234776e-05,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.02782590000424534
+        }
+      }
+    },
+    {
+      "label": "mujoco/euler/2ms/no-contacts",
+      "backend": "mujoco",
+      "version": "3.17.0",
+      "device": "cpu",
+      "config": {
+        "timestep": 0.002,
+        "record_contacts": false
+      },
+      "suite_sim_wall_s": 0.09579580003628507,
+      "analytic": [
+        {
+          "case": "free_fall",
+          "metric": "max position error over 1 s",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.009809999999994545,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.004936100012855604,
+          "abs_err": 0.009809999999994545,
+          "rel_err": null
+        },
+        {
+          "case": "free_fall",
+          "metric": "time to drop 1 m",
+          "unit": "s",
+          "expected": 0.4515236409857309,
+          "measured": 0.45052061903437945,
+          "params": {
+            "z0": 10.0
+          },
+          "sim_wall_s": 0.004936100012855604,
+          "abs_err": 0.001003021951351435,
+          "rel_err": 0.0022214162455850956
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.0)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0,
+          "params": {
+            "e": 0.0,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.0064258000056724995,
+          "abs_err": 0.0,
+          "rel_err": null
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.3)",
+          "unit": "m",
+          "expected": 0.09,
+          "measured": 0.13081166074012213,
+          "params": {
+            "e": 0.3,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.005628699989756569,
+          "abs_err": 0.04081166074012213,
+          "rel_err": 0.4534628971124681
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.6)",
+          "unit": "m",
+          "expected": 0.36,
+          "measured": 0.3812241592191261,
+          "params": {
+            "e": 0.6,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.005085399985546246,
+          "abs_err": 0.021224159219126126,
+          "rel_err": 0.05895599783090591
+        },
+        {
+          "case": "bounce",
+          "metric": "rebound height (e=0.9)",
+          "unit": "m",
+          "expected": 0.81,
+          "measured": 0.8106297640572121,
+          "params": {
+            "e": 0.9,
+            "h": 1.0
+          },
+          "sim_wall_s": 0.005059100018115714,
+          "abs_err": 0.0006297640572120455,
+          "rel_err": 0.0007774864903852414
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.2)",
+          "unit": "m",
+          "expected": 1.019367991845056,
+          "measured": 1.0174465739258027,
+          "params": {
+            "mu": 0.2,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.007438300002831966,
+          "abs_err": 0.0019214179192532654,
+          "rel_err": 0.0018849109787874535
+        },
+        {
+          "case": "slide",
+          "metric": "stopping distance (mu=0.5)",
+          "unit": "m",
+          "expected": 0.4077471967380224,
+          "measured": 0.4059368049451092,
+          "params": {
+            "mu": 0.5,
+            "v0": 2.0
+          },
+          "sim_wall_s": 0.004863900016061962,
+          "abs_err": 0.0018103917929132018,
+          "rel_err": 0.004439985872119628
+        },
+        {
+          "case": "stack",
+          "metric": "top box drift over 3 s (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.0006519090871441868,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.04518800001824275,
+          "abs_err": 0.0006519090871441868,
+          "rel_err": null
+        },
+        {
+          "case": "stack",
+          "metric": "max penetration (5 boxes)",
+          "unit": "m",
+          "expected": 0.0,
+          "measured": 0.00020387093038959359,
+          "params": {
+            "n": 5,
+            "edge": 0.2
+          },
+          "sim_wall_s": 0.04518800001824275,
+          "abs_err": 0.00020387093038959359,
+          "rel_err": null
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=1.0)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 1.0000020949945105,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.005655599990859628,
+          "abs_err": 2.094994510537518e-06,
+          "rel_err": 2.094994510537518e-06
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=1.0)",
+          "unit": "m/s",
+          "expected": 1.0,
+          "measured": 0.9989791240275594,
+          "params": {
+            "e": 1.0,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.005655599990859628,
+          "abs_err": 0.0010208759724406047,
+          "rel_err": 0.0010208759724406047
+        },
+        {
+          "case": "collision",
+          "metric": "momentum after (e=0.5)",
+          "unit": "kg*m/s",
+          "expected": 1.0,
+          "measured": 0.9999997140048651,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.0055148999963421375,
+          "abs_err": 2.8599513490767947e-07,
+          "rel_err": 2.8599513490767947e-07
+        },
+        {
+          "case": "collision",
+          "metric": "v_B after (e=0.5)",
+          "unit": "m/s",
+          "expected": 0.75,
+          "measured": 0.7638990278301377,
+          "params": {
+            "e": 0.5,
+            "v": 1.0
+          },
+          "sim_wall_s": 0.0055148999963421375,
+          "abs_err": 0.013899027830137745,
+          "rel_err": 0.018532037106850325
+        }
+      ],
+      "consistency": {
+        "stack5": {
+          "max_pos": 0.0004834693685128455,
+          "rms_pos": 3.021614490761069e-05,
+          "final_pos": 2.7392679858549868e-11,
+          "max_rot_deg": 0.0,
+          "worst_body": "b4",
+          "sim_wall_s": 0.0489850000012666
+        },
+        "bounce_e0.6": {
+          "max_pos": 0.005638512518732985,
+          "rms_pos": 0.00258887291290979,
+          "final_pos": 0.005638512518732985,
+          "max_rot_deg": 0.0,
+          "worst_body": "ball",
+          "sim_wall_s": 0.005831399990711361
+        },
+        "slide_mu0.5": {
+          "max_pos": 0.005540797868089552,
+          "rms_pos": 0.0016118141746407273,
+          "final_pos": 0.0019922095780022797,
+          "max_rot_deg": 1.379672993739796,
+          "worst_body": "box",
+          "sim_wall_s": 0.005107700009830296
+        },
+        "tumble": {
+          "max_pos": 0.44434478417675316,
+          "rms_pos": 0.07568734940377168,
+          "final_pos": 0.03959547476458867,
+          "max_rot_deg": 60.59429768319914,
+          "worst_body": "b3",
+          "sim_wall_s": 0.03245129997958429
+        },
+        "remove_support/baseline": {
+          "max_pos": 0.00011950129993101855,
+          "rms_pos": 1.1457760233711165e-05,
+          "final_pos": 2.858824413088008e-15,
+          "max_rot_deg": 0.0,
+          "worst_body": "support",
+          "sim_wall_s": 0.011274299991782755
+        },
+        "remove_support/causal": {
+          "max_pos": 0.0024330344386722935,
+          "rms_pos": 0.00039033081020797974,
+          "final_pos": 5.3915223860346806e-14,
+          "max_rot_deg": 0.0,
+          "worst_body": "box",
+          "sim_wall_s": 0.007169599994085729
+        }
+      }
+    }
+  ]
+}
