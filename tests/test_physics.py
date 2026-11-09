@@ -49,14 +49,14 @@ def test_compatible_physics_routes_example(example_ir):
     assert res["mujoco"] == []
     assert res["physx"] == []
     assert res["replay"] == ["unsupported feature: rigid"]
-    assert "no usable device" in res["newton"][0]  # CUDA-only, CPU-only machine (VW_DEVICES=cpu)
+    assert res["newton"] == []  # Newton also runs on CPU (Warp)
 
 
 def test_device_resolution(monkeypatch):
     monkeypatch.setenv("VW_DEVICES", "cuda,cpu")
     assert registry.get_physics("physx", device="auto").device is Device.CPU  # CPU PhysX only (GPU: newton)
     assert registry.get_physics("newton", device="auto").device is Device.CUDA
-    assert registry.get_physics("newton", device="gpu").device is Device.CUDA
+    assert registry.get_physics("newton", device="cpu").device is Device.CPU
     with pytest.raises(RuntimeError, match="no usable device"):
         registry.get_physics("mujoco", device="gpu")
 
@@ -66,10 +66,16 @@ def test_unknown_backend():
         registry.get_physics("havok")
 
 
-def test_stub_simulate_is_explicit(example_ir, monkeypatch):
-    monkeypatch.setenv("VW_DEVICES", "cuda,cpu")
+def test_stub_simulate_is_explicit(example_ir):
+    from vw.physics.base import Capabilities
+    from vw.physics.stubs import _EngineStub
+
+    class Dummy(_EngineStub):
+        name = "dummy"
+        capabilities = Capabilities(frozenset({Feature.RIGID}), frozenset({Device.CPU}))
+
     with pytest.raises(NotImplementedError, match="stub"):
-        registry.get_physics("newton").compile(example_ir)
+        Dummy(device="cpu").compile(example_ir)
 
 
 def test_compile_refuses_unsupported_loudly(example_ir):

@@ -13,7 +13,7 @@ Simulator-agnostic infrastructure for generating physically consistent counterfa
 | `vw/interventions` | `remove()`: deletes bodies from the IR (no hidden colliders left behind) |
 | `vw/registry.py` | adapter registry, `--device auto\|cpu\|gpu` resolution, capability routing |
 | `vw/manifest.py` | per-tuple manifest (seeds, backends, device, hardware, token usage); enforces the same physics and render backend, device and seed across all members of a tuple |
-| adapters | `mujoco` (IR → MJCF → `SimResult`, contacts, kinematic overrides via mocap), `bullet_blender` (headless Blender rigid-body world; needs a Blender install, found via `VW_BLENDER` or the default path), `physx` (PhysX 5 via SAPIEN, CPU; `pip install -e ".[physx]"`) and `replay` are implemented; `newton`, `blender_cycles`, `blender_eevee` are stubs |
+| adapters | `mujoco` (IR → MJCF → `SimResult`, contacts, kinematic overrides via mocap), `bullet_blender` (headless Blender rigid-body world; needs a Blender install, found via `VW_BLENDER` or the default path), `physx` (PhysX 5 via SAPIEN, CPU; `pip install -e ".[physx]"`), `newton` (Newton on Warp, CUDA or CPU, XPBD / MuJoCo Warp solvers, multi-world batches; `pip install -e ".[newton]"`) and `replay` are implemented; `blender_cycles`, `blender_eevee` are stubs |
 | `vw/benchmark` | M2: analytic physics suite, trajectory consistency, `vw bench` report. Findings in [docs/benchmarks/README.md](docs/benchmarks/README.md) |
 
 ## Quickstart

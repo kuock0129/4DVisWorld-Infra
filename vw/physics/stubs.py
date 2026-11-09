@@ -1,9 +1,9 @@
 """Built-in physics adapters and the shared adapter base.
 
-``replay`` is fully implemented (trace-level pose playback). ``newton`` is a stub:
-check() is real, so capability routing works today; compile()/simulate() land in a
-later milestone. Engine adapters live in their own modules (``vw.physics.mujoco``,
-``vw.physics.bullet_blender``, ``vw.physics.physx``).
+``replay`` (trace-level pose playback) lives here. Engine adapters live in their own
+modules: ``vw.physics.mujoco``, ``vw.physics.bullet_blender``, ``vw.physics.physx``,
+``vw.physics.newton``. ``_EngineStub`` remains for adapters that are registered before
+they are implemented.
 """
 
 from __future__ import annotations
@@ -63,14 +63,6 @@ class _EngineStub(_AdapterBase):
 
 
 _RIGID = frozenset({Feature.RIGID, Feature.KINEMATIC, Feature.MESH_COLLISION})
-
-
-@register_physics("newton")
-class NewtonAdapter(_EngineStub):
-    """Newton / MuJoCo Warp (GPU batch)."""
-
-    name = "newton"
-    capabilities = Capabilities(_RIGID, frozenset({Device.CUDA}))
 
 
 @register_physics("replay")
