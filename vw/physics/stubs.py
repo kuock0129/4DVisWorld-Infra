@@ -1,9 +1,9 @@
 """Built-in physics adapters and the shared adapter base.
 
-``replay`` is fully implemented (trace-level pose playback). ``newton``, ``physx`` and
-``bullet_blender`` are stubs: check() and param_map() are real, so capability routing
-works today; compile()/simulate() land in later milestones. MuJoCo lives in
-``vw.physics.mujoco``.
+``replay`` is fully implemented (trace-level pose playback). ``newton`` and ``physx``
+are stubs: check() is real, so capability routing works today; compile()/simulate()
+land in later milestones. Engine adapters live in their own modules
+(``vw.physics.mujoco``, ``vw.physics.bullet_blender``).
 """
 
 from __future__ import annotations
@@ -77,14 +77,6 @@ class NewtonAdapter(_EngineStub):
 class PhysXAdapter(_EngineStub):
     name = "physx"
     capabilities = Capabilities(_RIGID, frozenset({Device.CPU, Device.CUDA}))
-
-
-@register_physics("bullet_blender")
-class BulletBlenderAdapter(_EngineStub):
-    """Blender's built-in Bullet rigid-body world, run headless."""
-
-    name = "bullet_blender"
-    capabilities = Capabilities(_RIGID, frozenset({Device.CPU}))
 
 
 @register_physics("replay")

@@ -53,6 +53,10 @@ def to_markdown(res: dict[str, Any]) -> str:
             f"| {c['label']} | {c['backend']} | {c['version']} | {c['device']} | {cfg} | {c['suite_sim_wall_s']:.2f} s |"
         )
 
+    for s in res.get("skipped", []):
+        lines.append(f"
+Skipped **{s['label']}**: {'; '.join(s['reason'])}")
+
     lines += ["", "## Analytic suite", "",
               "Cells: measured value (relative error where the expected value is non-zero).", "",
               "| Case | Metric | Expected | " + " | ".join(labels) + " |",
