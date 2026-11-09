@@ -1,0 +1,1254 @@
+{
+  "ir_version": "0.1",
+  "level": "physical",
+  "gravity": [
+    0.0,
+    0.0,
+    -9.81
+  ],
+  "timing": {
+    "fps": 24,
+    "frames": 130
+  },
+  "bodies": [
+    {
+      "id": "floor",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.1,
+          40.0,
+          45.0
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.49,
+        "restitution": 0.09
+      },
+      "initial_pose": {
+        "position": [
+          -2.5,
+          0.0,
+          -0.27
+        ],
+        "orientation": [
+          0.707106781,
+          0.0,
+          -0.707106781,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "lane",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.22,
+          1.054,
+          9.87
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          -4.065,
+          0.0,
+          -0.11
+        ],
+        "orientation": [
+          0.707106781,
+          0.0,
+          -0.707106781,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_L_0",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.338771,
+          0.1958,
+          0.01
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          -9.0,
+          0.730698,
+          -0.082032
+        ],
+        "orientation": [
+          0.625253002,
+          -0.330240342,
+          -0.625253002,
+          0.330240342
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_L_1",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.123958,
+          0.082826,
+          0.01
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          -9.0,
+          0.634114,
+          -0.105447
+        ],
+        "orientation": [
+          0.363525673,
+          0.606505635,
+          -0.363525673,
+          -0.606505635
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_L_2",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.316586,
+          0.333007,
+          9.87
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          -4.065,
+          0.625251,
+          -0.071646
+        ],
+        "orientation": [
+          0.685915627,
+          0.171813131,
+          -0.685915627,
+          -0.171813131
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_L_3",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.123957,
+          0.082826,
+          0.01
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          0.87,
+          0.711719,
+          -0.081906
+        ],
+        "orientation": [
+          0.103753582,
+          0.699453497,
+          -0.103753582,
+          -0.699453497
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_L_4",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.123957,
+          0.082826,
+          0.01
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          0.87,
+          0.562594,
+          -0.067219
+        ],
+        "orientation": [
+          0.567953439,
+          0.421223089,
+          -0.567953439,
+          -0.421223089
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_R_0",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.123957,
+          0.082826,
+          0.01
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          -9.0,
+          -0.562594,
+          -0.067219
+        ],
+        "orientation": [
+          0.034695708,
+          0.706255059,
+          -0.034695708,
+          -0.706255059
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_R_1",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.123957,
+          0.082826,
+          0.01
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          -9.0,
+          -0.711719,
+          -0.081906
+        ],
+        "orientation": [
+          0.523931541,
+          0.474863918,
+          -0.523931541,
+          -0.474863918
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_R_2",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.26,
+          0.22,
+          9.87
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          -4.065,
+          -0.625251,
+          -0.071646
+        ],
+        "orientation": [
+          0.5,
+          -0.5,
+          0.5,
+          -0.5
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_R_3",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.123957,
+          0.082826,
+          0.01
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          0.87,
+          -0.634114,
+          -0.105447
+        ],
+        "orientation": [
+          0.302326811,
+          0.639217099,
+          -0.302326811,
+          -0.639217099
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "gutter_R_4",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.335005,
+          0.200982,
+          0.01
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.25,
+        "restitution": 0.25
+      },
+      "initial_pose": {
+        "position": [
+          0.87,
+          -0.730698,
+          -0.082032
+        ],
+        "orientation": [
+          0.665772032,
+          0.23821755,
+          -0.665772032,
+          -0.23821755
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "curb_L",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.08,
+          0.22,
+          0.83
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.49,
+        "restitution": 0.09
+      },
+      "initial_pose": {
+        "position": [
+          1.285,
+          0.82,
+          -0.11
+        ],
+        "orientation": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "curb_R",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.08,
+          0.22,
+          0.83
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.49,
+        "restitution": 0.09
+      },
+      "initial_pose": {
+        "position": [
+          1.285,
+          -0.74,
+          -0.11
+        ],
+        "orientation": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "wall",
+      "kind": "static",
+      "geometry": {
+        "type": "box",
+        "extents": [
+          0.1,
+          0.785,
+          1.56
+        ]
+      },
+      "mass": null,
+      "material": {
+        "friction": 0.49,
+        "restitution": 0.09
+      },
+      "initial_pose": {
+        "position": [
+          1.75,
+          0.06,
+          0.1725
+        ],
+        "orientation": [
+          0.707106781,
+          0.707106781,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_A1",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          -0.0,
+          0.0,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_A2",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.263965,
+          0.1524,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_A3",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.527929,
+          0.3048,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_A4",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.791894,
+          0.4572,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_B1",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.263965,
+          -0.1524,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_B2",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.527929,
+          0.0,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_B3",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.791894,
+          0.1524,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_C1",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.527929,
+          -0.3048,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_C2",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.791894,
+          -0.1524,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "pin_D1",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "cylinder",
+        "radius": 0.0605,
+        "height": 0.381
+      },
+      "mass": 1.5,
+      "material": {
+        "friction": 0.2025,
+        "restitution": 0.3025
+      },
+      "initial_pose": {
+        "position": [
+          0.791894,
+          -0.4572,
+          0.1905
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    },
+    {
+      "id": "ball",
+      "kind": "dynamic",
+      "geometry": {
+        "type": "sphere",
+        "radius": 0.1085
+      },
+      "mass": 6.5,
+      "material": {
+        "friction": 0.1225,
+        "restitution": 0.16
+      },
+      "initial_pose": {
+        "position": [
+          -6.293334,
+          0.045,
+          0.1085
+        ],
+        "orientation": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_linear_velocity": [
+        7.369999,
+        0.0,
+        0.0
+      ],
+      "initial_angular_velocity": [
+        0.0,
+        67.926172,
+        0.0
+      ],
+      "linear_damping": 0.0,
+      "angular_damping": 0.0,
+      "trajectory": null,
+      "appearance": {
+        "color": null,
+        "material_ref": null
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "cam",
+      "pose": {
+        "position": [
+          -3.865252,
+          -2.603538,
+          1.666719
+        ],
+        "orientation": [
+          0.698207168,
+          0.519380641,
+          -0.295279105,
+          -0.394411904
+        ]
+      },
+      "fov_deg": 18.1806,
+      "resolution": [
+        1280,
+        720
+      ],
+      "trajectory": null
+    }
+  ],
+  "lights": [],
+  "metadata": {
+    "name": "B_03",
+    "description": "bowling ball strikes a 10-pin rack",
+    "target": "ball",
+    "source": "4DCodeBench outputs/2026-11-05/opus-5.5, sim/baseline",
+    "original_bullet_settings": {
+      "pin_friction": 0.45,
+      "pin_restitution": 0.55,
+      "ball_friction": 0.35,
+      "ball_restitution": 0.4,
+      "lane_friction": 0.5,
+      "lane_restitution": 0.5,
+      "floor_friction": 0.7,
+      "floor_restitution": 0.3,
+      "wall_restitution": 0.3
+    },
+    "approximations": [
+      "Box meshes (8 vertices, or several disjoint 8-vertex boxes) become IR boxes. The non-box static meshes Bullet used are kept part by part: the B_01 storage box is 5 boxes; the B_03 gutters are 5 zero-thickness quads each, which become 1 cm slabs centred on the surface.",
+      "B_01 floor becomes an infinite plane at its top face.",
+      "B_03 pins (lathe meshes, convex hulls in Bullet) become cylinders r = 0.0605 m, h = 0.381 m, so their centre of mass sits higher (0.19 m vs about 0.14 m) and their base is wider.",
+      "Materials: 4DCodeBench set Blender values, which Bullet multiplies per pair. The IR stores value**2, so bullet_blender (IR -> sqrt) reproduces the original pairs exactly; other engines combine pairs by their own rule (MuJoCo max, PhysX average, Newton XPBD average).",
+      "Damping is 0 (the original used small plank / pin damping; Newton has no per-body damping).",
+      "The ball is dynamic from frame 0 with the velocity of its scripted release track and rolling spin, instead of being animated for the first frames.",
+      "Window, window pane and baseboards were excluded from the original Bullet world; same here."
+    ]
+  }
+}

@@ -74,6 +74,31 @@ def cmd_bench(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_codebench(args: argparse.Namespace) -> int:
+    import json as _json
+
+    from vw import registry
+    from vw.benchmark.codebench import run_tuple, save
+
+    ir = _load(args.path)
+    if ir is None:
+        return 1
+    adapter = registry.get_physics(args.backend, device=args.device, **_json.loads(args.config))
+    problems = adapter.check(ir)
+    if problems:
+        print(f"{args.backend} refuses {args.path}: " + "; ".join(problems))
+        return 2
+    result, sims = run_tuple(adapter, ir, Path(args.original) if args.original else None)
+    out = Path(args.out) / (args.label or args.backend)
+    for p in save(result, sims, out):
+        print(f"wrote {p}")
+    from vw.benchmark.codebench import _jsonable
+
+    keys = ("timing", "baseline", "causal", "noncausal", "checks", "vs_original_bullet")
+    print(_json.dumps({k: result[k] for k in keys if k in result}, indent=2, default=_jsonable))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="vw", description="4DVisWorld-Infra")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -96,6 +121,16 @@ def build_parser() -> argparse.ArgumentParser:
     bn.add_argument("--out", default="docs/benchmarks")
     bn.add_argument("--example", default="examples/remove_support.json")
     bn.set_defaults(fn=cmd_bench)
+
+    cb = sub.add_parser("codebench", help="run a 4DCodeBench case (examples/codebench/*.json) as a tuple")
+    cb.add_argument("path", help="Scene IR, e.g. examples/codebench/B_01.json")
+    cb.add_argument("--backend", required=True)
+    cb.add_argument("--device", default="auto", choices=["auto", "cpu", "gpu", "cuda", "metal"])
+    cb.add_argument("--config", default="{}", help="adapter config as JSON")
+    cb.add_argument("--original", help="4DCodeBench case dir (e.g. .../opus-5.5/B_01) to compare with")
+    cb.add_argument("--out", default="docs/benchmarks/codebench")
+    cb.add_argument("--label", help="output sub-folder (default: backend name)")
+    cb.set_defaults(fn=cmd_codebench)
     return ap
 
 
