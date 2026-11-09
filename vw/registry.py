@@ -114,4 +114,5 @@ def _ensure_builtin() -> None:
     if not _LOADED:
         _LOADED = True
         import vw.physics.stubs  # noqa: F401  (registers on import)
+        import vw.physics.mujoco  # noqa: F401
         import vw.render.stubs  # noqa: F401

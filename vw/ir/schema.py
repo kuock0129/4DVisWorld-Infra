@@ -162,8 +162,8 @@ class Body(_Model):
     mass: float | None = Field(default=None, gt=0.0, description="kg; required for dynamic bodies")
     material: Material = Material()
     initial_pose: Pose = Pose()
-    initial_linear_velocity: Vec3 = (0.0, 0.0, 0.0)
-    initial_angular_velocity: Vec3 = (0.0, 0.0, 0.0)
+    initial_linear_velocity: Vec3 = Field(default=(0.0, 0.0, 0.0), description="m/s, world frame")
+    initial_angular_velocity: Vec3 = Field(default=(0.0, 0.0, 0.0), description="rad/s, world frame")
     linear_damping: float = Field(default=0.0, ge=0.0)
     angular_damping: float = Field(default=0.0, ge=0.0)
     trajectory: Trajectory | None = Field(

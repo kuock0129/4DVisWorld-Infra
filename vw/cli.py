@@ -3,6 +3,7 @@
     vw validate scene.json            validate a Scene IR file
     vw check scene.json [--device D]  which physics backends can handle it
     vw backends                       list registered adapters
+    vw bench [--quick] [--out DIR]    M2 physics benchmark -> DIR/results.{json,md}, plot
 """
 
 from __future__ import annotations
@@ -62,6 +63,17 @@ def cmd_backends(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_bench(args: argparse.Namespace) -> int:
+    from vw.benchmark.report import write_report
+    from vw.benchmark.runner import DEFAULT_CONFIGS, QUICK_CONFIGS, run_benchmark
+
+    res = run_benchmark(QUICK_CONFIGS if args.quick else DEFAULT_CONFIGS, repeats=args.repeats,
+                        example=Path(args.example))
+    for p in write_report(res, Path(args.out)):
+        print("wrote", p)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="vw", description="4DVisWorld-Infra")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -77,6 +89,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     b = sub.add_parser("backends", help="list registered adapters")
     b.set_defaults(fn=cmd_backends)
+
+    bn = sub.add_parser("bench", help="run the M2 physics benchmark")
+    bn.add_argument("--quick", action="store_true", help="two configs only")
+    bn.add_argument("--repeats", type=int, default=3, help="wall-clock = min over N runs")
+    bn.add_argument("--out", default="docs/benchmarks")
+    bn.add_argument("--example", default="examples/remove_support.json")
+    bn.set_defaults(fn=cmd_bench)
     return ap
 
 

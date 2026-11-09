@@ -1,8 +1,9 @@
-"""Built-in physics adapters.
+"""Built-in physics adapters and the shared adapter base.
 
-``replay`` is fully implemented (trace-level pose playback; used for non-causal
-counterfactuals). The engine adapters are M0 stubs: check() and param_map() are
-real, so capability routing works today; compile()/simulate() land in later milestones.
+``replay`` is fully implemented (trace-level pose playback). ``newton``, ``physx`` and
+``bullet_blender`` are stubs: check() and param_map() are real, so capability routing
+works today; compile()/simulate() land in later milestones. MuJoCo lives in
+``vw.physics.mujoco``.
 """
 
 from __future__ import annotations
@@ -62,38 +63,6 @@ class _EngineStub(_AdapterBase):
 
 
 _RIGID = frozenset({Feature.RIGID, Feature.KINEMATIC, Feature.MESH_COLLISION})
-
-
-@register_physics("mujoco")
-class MuJoCoAdapter(_EngineStub):
-    """compile() is real (IR -> MJCF); simulate() lands in M1.
-
-    Kinematic bodies are MJCF mocap bodies; simulate() will write their pose from the
-    trajectory (or the ``kinematic`` override, e.g. replayed baseline poses) every step.
-    """
-
-    name = "mujoco"
-    milestone = "M1"
-    capabilities = Capabilities(_RIGID, frozenset({Device.CPU}))
-
-    def compile(self, ir: SceneIR) -> NativeScene:
-        from vw.physics.mujoco_mjcf import ir_to_mjcf
-
-        self._require(ir)
-        return ir_to_mjcf(ir, timestep=float(self.config.get("timestep", 0.002)))
-
-    def param_map(self) -> dict[str, Any]:
-        return {
-            "geometry.box.extents": {"to": "geom.size", "note": "exact: half-sizes = extents / 2"},
-            "geometry.plane.extents": {"to": "geom.size[0:2]", "note": "exact: extents / 2; collision plane is infinite"},
-            "geometry.cylinder|capsule.height": {"to": "geom.size[1]", "note": "exact: half-length = height / 2"},
-            "material.friction": {"to": "geom.friction[0]", "note": "sliding only; torsional/rolling use MuJoCo defaults"},
-            "material.restitution": {"to": "geom.solref", "note": "NOT applied yet (M1): needs solref approximation"},
-            "mass": {"to": "geom.mass", "note": "inertia from geometry, uniform density"},
-            "linear_damping|angular_damping": {"to": "joint(free).damping", "note": "approximation: max of the two"},
-            "initial_*_velocity": {"to": "data.qvel", "note": "set at simulate() time (M1)"},
-            "kind=kinematic": {"to": "body.mocap", "note": "pose set from trajectory every step"},
-        }
 
 
 @register_physics("newton")

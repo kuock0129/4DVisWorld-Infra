@@ -67,9 +67,6 @@ def test_unknown_backend():
 
 
 def test_stub_simulate_is_explicit(example_ir):
-    mj = registry.get_physics("mujoco")
-    with pytest.raises(NotImplementedError, match="stub"):
-        mj.simulate(mj.compile(example_ir))
     with pytest.raises(NotImplementedError, match="stub"):
         registry.get_physics("physx").compile(example_ir)
 

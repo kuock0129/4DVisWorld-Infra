@@ -97,9 +97,11 @@ Trajectory = np.ndarray
 
 @dataclass
 class SimResult:
+    """Frame k is the state at t = k / fps; frame 0 is the initial state."""
+
     fps: int
     poses: dict[str, np.ndarray]  # obj_id -> (T, 7) pos + quat (w, x, y, z)
-    velocities: dict[str, np.ndarray]  # obj_id -> (T, 6) linear + angular
+    velocities: dict[str, np.ndarray]  # obj_id -> (T, 6) linear + angular, world frame
     contacts: list[ContactEvent]
     backend: BackendInfo
 
