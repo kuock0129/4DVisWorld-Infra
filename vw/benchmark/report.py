@@ -54,8 +54,7 @@ def to_markdown(res: dict[str, Any]) -> str:
         )
 
     for s in res.get("skipped", []):
-        lines.append(f"
-Skipped **{s['label']}**: {'; '.join(s['reason'])}")
+        lines += ["", f"Skipped **{s['label']}**: {'; '.join(s['reason'])}"]
 
     lines += ["", "## Analytic suite", "",
               "Cells: measured value (relative error where the expected value is non-zero).", "",

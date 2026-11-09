@@ -116,4 +116,5 @@ def _ensure_builtin() -> None:
         import vw.physics.stubs  # noqa: F401  (registers on import)
         import vw.physics.mujoco  # noqa: F401
         import vw.physics.bullet_blender  # noqa: F401
+        import vw.physics.physx  # noqa: F401
         import vw.render.stubs  # noqa: F401
