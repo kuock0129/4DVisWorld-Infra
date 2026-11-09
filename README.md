@@ -2,7 +2,7 @@
 
 Simulator-agnostic infrastructure for generating physically consistent counterfactual video tuples. A coding agent reconstructs a source video as executable scene code. That code is converted to a canonical **Scene IR**, interventions such as object removal are applied to the IR, and a real physics backend re-simulates the result. Each sample is a baseline, a causal counterfactual, a non-causal counterfactual, and masks, all checked at the code level. Every layer talks through adapters that exchange only the Scene IR and a `SimResult`, so backends (MuJoCo, Newton, PhysX, Bullet via Blender) and renderers can be swapped freely. See [ROADMAP.md](ROADMAP.md) for milestones and [docs/HANDOFF.md](docs/HANDOFF.md) for the full design.
 
-## Status: M0 done, M2 in progress
+## Status: M0 done, M2 benchmark done (backend decision proposed)
 
 | Module | What's there |
 |---|---|
@@ -14,7 +14,8 @@ Simulator-agnostic infrastructure for generating physically consistent counterfa
 | `vw/registry.py` | adapter registry, `--device auto\|cpu\|gpu` resolution, capability routing |
 | `vw/manifest.py` | per-tuple manifest (seeds, backends, device, hardware, token usage); enforces the same physics and render backend, device and seed across all members of a tuple |
 | adapters | `mujoco` (IR → MJCF → `SimResult`, contacts, kinematic overrides via mocap), `bullet_blender` (headless Blender rigid-body world; needs a Blender install, found via `VW_BLENDER` or the default path), `physx` (PhysX 5 via SAPIEN, CPU; `pip install -e ".[physx]"`), `newton` (Newton on Warp, CUDA or CPU, XPBD / MuJoCo Warp solvers, multi-world batches; `pip install -e ".[newton]"`) and `replay` are implemented; `blender_cycles`, `blender_eevee` are stubs |
-| `vw/benchmark` | M2: analytic physics suite, trajectory consistency, `vw bench` report. Findings in [docs/benchmarks/README.md](docs/benchmarks/README.md) |
+| `vw/benchmark` | M2: analytic physics suite, trajectory consistency, CPU vs GPU throughput, `vw bench` report, and `vw codebench` for 4DCodeBench tuples. Findings in [docs/benchmarks/README.md](docs/benchmarks/README.md) |
+| `videos/` | rendered 4DCodeBench B_01 / B_03 tuples for every engine (`videos/<case>/<case>_compare.mp4`: rows = engines, columns = baseline / causal / non-causal) |
 
 ## Quickstart
 

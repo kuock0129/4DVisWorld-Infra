@@ -68,7 +68,7 @@ def cmd_bench(args: argparse.Namespace) -> int:
     from vw.benchmark.runner import DEFAULT_CONFIGS, QUICK_CONFIGS, run_benchmark
 
     res = run_benchmark(QUICK_CONFIGS if args.quick else DEFAULT_CONFIGS, repeats=args.repeats,
-                        example=Path(args.example))
+                        example=Path(args.example), throughput=not (args.quick or args.no_throughput))
     for p in write_report(res, Path(args.out)):
         print("wrote", p)
     return 0
@@ -120,6 +120,7 @@ def build_parser() -> argparse.ArgumentParser:
     bn.add_argument("--repeats", type=int, default=3, help="wall-clock = min over N runs")
     bn.add_argument("--out", default="docs/benchmarks")
     bn.add_argument("--example", default="examples/remove_support.json")
+    bn.add_argument("--no-throughput", action="store_true", help="skip the CPU vs GPU multi-world section")
     bn.set_defaults(fn=cmd_bench)
 
     cb = sub.add_parser("codebench", help="run a 4DCodeBench case (examples/codebench/*.json) as a tuple")

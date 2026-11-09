@@ -111,10 +111,11 @@ class NewtonAdapter(_AdapterBase):
             "timestep": dt,
             "timestep_requested": float(c.get("timestep", 0.002)),
             "steps_per_frame": n,
-            "iterations": int(c.get("iterations", 8)),
+            "iterations": int(c.get("iterations", 8)) if solver == "xpbd" else None,
             "cuda_graph": bool(c.get("cuda_graph", True)) and self.device is Device.CUDA,
             "worlds": int(c.get("worlds", 1)),
-            "deterministic": bool(c.get("deterministic", True)),
+            # MuJoCo Warp cannot run in Warp's deterministic mode (see _solver): reported honestly.
+            "deterministic": bool(c.get("deterministic", True)) and solver != "mujoco",
         }
         if cfg["worlds"] < 1:
             raise ValueError("worlds must be >= 1")
@@ -161,12 +162,14 @@ class NewtonAdapter(_AdapterBase):
         return builder.finalize(device=device), body_index
 
     def _solver(self, newton, wp, model, cfg):
+        det = wp.DeterministicMode.RUN_TO_RUN if cfg["deterministic"] else wp.DeterministicMode.NOT_GUARANTEED
         if cfg["solver"] == "xpbd":
-            det = wp.DeterministicMode.RUN_TO_RUN if cfg["deterministic"] else wp.DeterministicMode.NOT_GUARANTEED
             return newton.solvers.SolverXPBD(model, iterations=cfg["iterations"], enable_restitution=True,
                                              deterministic=det)
         if cfg["solver"] == "mujoco":
             # Default contact buffers overflow on a 5-box stack (boxes sink through each other).
+            # Not run-to-run deterministic: Newton 1.7 cannot build MuJoCo Warp's contact conversion
+            # kernel in deterministic mode (WarpDeterminismError), so compile() reports deterministic=False.
             return newton.solvers.SolverMuJoCo(model, nconmax=256, njmax=1024)
         return newton.solvers.SolverSemiImplicit(model)
 

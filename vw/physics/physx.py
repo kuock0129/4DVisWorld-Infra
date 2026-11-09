@@ -67,7 +67,8 @@ class PhysXAdapter(_AdapterBase):
     """Config: timestep (s, default 0.002), solver (tgs|pgs, default tgs), position_iterations
     (default 4), velocity_iterations (default 1), bounce_threshold (m/s, default 0.05; PhysX's own
     default of 2 m/s would drop most bounces), enable_pcm (default True), enable_ccd (default
-    False), contact_offset (m, default 0.01), record_contacts (default True)."""
+    False), contact_offset (m, default 0.01), max_depenetration_velocity (m/s, default PhysX's own,
+    effectively unbounded: caps how fast deep overlaps are pushed apart), record_contacts (default True)."""
 
     name = "physx"
     capabilities = Capabilities(frozenset({Feature.RIGID, Feature.KINEMATIC}), frozenset({Device.CPU}))
@@ -101,6 +102,7 @@ class PhysXAdapter(_AdapterBase):
             "enable_pcm": bool(c.get("enable_pcm", True)),
             "enable_ccd": bool(c.get("enable_ccd", False)),
             "contact_offset": float(c.get("contact_offset", 0.01)),
+            "max_depenetration_velocity": c.get("max_depenetration_velocity"),
         }
         if cfg["solver"] not in ("tgs", "pgs"):
             raise ValueError(f"physx solver must be 'tgs' or 'pgs', got {cfg['solver']!r}")
@@ -158,6 +160,8 @@ class PhysXAdapter(_AdapterBase):
             if b.kind is not BodyKind.STATIC:
                 body = ent.find_component_by_type(px.PhysxRigidDynamicComponent)
                 if dynamic:
+                    if scene_cfg["max_depenetration_velocity"] is not None:
+                        body.set_max_depenetration_velocity(float(scene_cfg["max_depenetration_velocity"]))
                     body.set_linear_damping(b.linear_damping)
                     body.set_angular_damping(b.angular_damping)
                     body.set_linear_velocity(list(b.initial_linear_velocity))

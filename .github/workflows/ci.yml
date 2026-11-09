@@ -25,6 +25,6 @@ jobs:
       - name: Install
         run: python -m pip install -e ".[dev,mujoco,physx]"
       - name: Validate examples
-        run: vw validate examples/remove_support.json
+        run: vw validate examples/remove_support.json examples/codebench/B_01.json examples/codebench/B_03.json
       - name: Test
         run: python -m pytest -q

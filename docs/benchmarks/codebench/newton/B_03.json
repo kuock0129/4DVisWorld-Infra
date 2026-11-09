@@ -1,0 +1,99 @@
+{
+  "case": "B_03",
+  "backend": "newton",
+  "version": "1.7.0 (warp 1.19.0)",
+  "device": "cuda",
+  "solver_config": {
+    "solver": "xpbd",
+    "timestep": 0.001984126984126984,
+    "timestep_requested": 0.002,
+    "steps_per_frame": 21,
+    "iterations": 8,
+    "cuda_graph": true,
+    "worlds": 1,
+    "deterministic": true,
+    "contacts": "not recorded"
+  },
+  "frames": 130,
+  "fps": 24,
+  "target": "ball",
+  "timing": {
+    "baseline": {
+      "call_s": 35.68849859997863,
+      "sim_s": 31.48912947893814
+    },
+    "causal": {
+      "call_s": 29.629021300002933,
+      "sim_s": 27.931440897640186
+    },
+    "noncausal": {
+      "call_s": 25.844226000015624,
+      "sim_s": 24.292294460186895
+    }
+  },
+  "baseline": {
+    "moved": 7,
+    "of": 10,
+    "max_final_displacement": 0.6600123039978831,
+    "max_path_displacement": 0.6604227620846506,
+    "down": [
+      "pin_A1",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C2"
+    ],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 0,
+    "of": 10,
+    "max_final_displacement": 0.0015294084370396175,
+    "max_path_displacement": 0.0015294084370396175,
+    "down": [],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 7,
+    "of": 10,
+    "max_final_displacement": 0.6600123039978831,
+    "max_path_displacement": 0.6604227620846506,
+    "down": [
+      "pin_A1",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C2"
+    ],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": true,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 0.0,
+    "causal_diverges_from_baseline": 6
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 11,
+    "final_pos_err_mean": 0.53580495773077,
+    "final_pos_err_median": 0.5216082605439235,
+    "final_pos_err_max": 0.9268070213759821,
+    "moved_agreement": 9,
+    "original_moved": 10,
+    "ball_path_err_mean": 1.716739514182927,
+    "ball_path_err_first_12_frames_max": 1.3126783370971702,
+    "ball_final_err": 0.38427905445295607,
+    "original_down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C1",
+      "pin_C2"
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "case": "B_01",
+  "backend": "bullet_blender",
+  "version": "blender-4.0.2",
+  "device": "cpu",
+  "solver_config": {
+    "timestep": 0.0020833333333333333,
+    "timestep_requested": 0.0020834,
+    "substeps": 20,
+    "solver_iterations": 40,
+    "split_impulse": false,
+    "collision_margin": 0.0008,
+    "scene_fps": 24,
+    "time_scale": 1.0,
+    "contacts": "unavailable"
+  },
+  "frames": 105,
+  "fps": 24,
+  "target": "ball",
+  "timing": {
+    "baseline": {
+      "call_s": 3.88301390002016,
+      "sim_s": 0.7950441000284627
+    },
+    "causal": {
+      "call_s": 4.340280700009316,
+      "sim_s": 0.9200293000321835
+    },
+    "noncausal": {
+      "call_s": 3.364663400046993,
+      "sim_s": 0.065832499996759
+    }
+  },
+  "baseline": {
+    "moved": 44,
+    "of": 47,
+    "max_final_displacement": 2.5510855697235293,
+    "max_path_displacement": 2.5510855697235293,
+    "down": [],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 0,
+    "of": 47,
+    "max_final_displacement": 0.0014189099167201571,
+    "max_path_displacement": 0.0014189099167201571,
+    "down": [],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 44,
+    "of": 47,
+    "max_final_displacement": 2.5510855697235293,
+    "max_path_displacement": 2.5510855697235293,
+    "down": [],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": true,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 2.220446049250313e-16,
+    "causal_diverges_from_baseline": 44
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 48,
+    "final_pos_err_mean": 0.2645941832373977,
+    "final_pos_err_median": 0.15002522251334094,
+    "final_pos_err_max": 1.1532813348441002,
+    "moved_agreement": 47,
+    "original_moved": 44,
+    "ball_path_err_mean": 0.22573043560366052,
+    "ball_path_err_first_12_frames_max": 0.004680018444377332,
+    "ball_final_err": 0.4971319047271013,
+    "original_down": []
+  }
+}

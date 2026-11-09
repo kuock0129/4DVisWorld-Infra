@@ -1,0 +1,87 @@
+wrote docs\benchmarks\codebench\bullet_fixgutter_damp_orig\B_03.json
+wrote docs\benchmarks\codebench\bullet_fixgutter_damp_orig\B_03_poses.npz
+{
+  "timing": {
+    "baseline": {
+      "call_s": 4.850573999981862,
+      "sim_s": 1.045218399958685
+    },
+    "causal": {
+      "call_s": 3.329209199990146,
+      "sim_s": 0.7697028999682516
+    },
+    "noncausal": {
+      "call_s": 3.367545799992513,
+      "sim_s": 0.0681971000158228
+    }
+  },
+  "baseline": {
+    "moved": 8,
+    "of": 10,
+    "max_final_displacement": 1.4033786477854286,
+    "max_path_displacement": 1.4674596848180443,
+    "down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B3",
+      "pin_C2"
+    ],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 0,
+    "of": 10,
+    "max_final_displacement": 4.2774639087229605e-06,
+    "max_path_displacement": 4.2774639087229605e-06,
+    "down": [],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 8,
+    "of": 10,
+    "max_final_displacement": 1.4033786477854286,
+    "max_path_displacement": 1.4674596848180443,
+    "down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B3",
+      "pin_C2"
+    ],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": true,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 2.220446049250313e-16,
+    "causal_diverges_from_baseline": 8
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 11,
+    "final_pos_err_mean": 0.263202390964903,
+    "final_pos_err_median": 0.24497490067647457,
+    "final_pos_err_max": 0.7046183579186382,
+    "moved_agreement": 10,
+    "original_moved": 10,
+    "ball_path_err_mean": 0.04145273976886457,
+    "ball_path_err_first_12_frames_max": 7.96320780697692e-05,
+    "ball_final_err": 0.06169559111757317,
+    "original_down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C1",
+      "pin_C2"
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "case": "B_03",
+  "backend": "newton",
+  "version": "1.7.0 (warp 1.19.0)",
+  "device": "cuda",
+  "solver_config": {
+    "solver": "xpbd",
+    "timestep": 0.000496031746031746,
+    "timestep_requested": 0.0005,
+    "steps_per_frame": 84,
+    "iterations": 8,
+    "cuda_graph": true,
+    "worlds": 1,
+    "deterministic": true,
+    "contacts": "not recorded"
+  },
+  "frames": 130,
+  "fps": 24,
+  "target": "ball",
+  "timing": {
+    "baseline": {
+      "call_s": 63.15760540001793,
+      "sim_s": 58.01342487187958
+    },
+    "causal": {
+      "call_s": 59.20516160002444,
+      "sim_s": 56.58900818203438
+    },
+    "noncausal": {
+      "call_s": 91.11284899996826,
+      "sim_s": 87.2385233226587
+    }
+  },
+  "baseline": {
+    "moved": 9,
+    "of": 10,
+    "max_final_displacement": 1.1508219466449052,
+    "max_path_displacement": 1.1508716161607462,
+    "down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3"
+    ],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 0,
+    "of": 10,
+    "max_final_displacement": 0.0006636324804622564,
+    "max_path_displacement": 0.0006636324804622564,
+    "down": [],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 9,
+    "of": 10,
+    "max_final_displacement": 1.1508219466449052,
+    "max_path_displacement": 1.1508716161607462,
+    "down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3"
+    ],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": true,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 0.0,
+    "causal_diverges_from_baseline": 8
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 11,
+    "final_pos_err_mean": 0.4708327652363388,
+    "final_pos_err_median": 0.29938711523729955,
+    "final_pos_err_max": 1.2322177133382002,
+    "moved_agreement": 11,
+    "original_moved": 10,
+    "ball_path_err_mean": 0.6558762325909577,
+    "ball_path_err_first_12_frames_max": 0.7403075695037854,
+    "ball_final_err": 0.2748901997357682,
+    "original_down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C1",
+      "pin_C2"
+    ]
+  }
+}
