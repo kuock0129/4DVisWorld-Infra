@@ -5,13 +5,13 @@ Simulator-agnostic infra for generating physically consistent counterfactual vid
 
 Target: dataset v0.1 + arXiv draft by **end of January 2027**.
 
-| # | Milestone | Window | Due (PST) | Proposed owner |
+| # | Milestone | Window | Due (PST) | Owner |
 |---|---|---|---|---|
-| M0 | Foundations: IR + adapter interfaces | Nov 6 – Nov 15 | 2026-11-15 | Kevin + Xianda |
-| M1 | First end-to-end removal tuple | Nov 16 – Nov 29 | 2026-11-29 | Kevin (IR/interventions), Xianda (adapters) |
-| M2 | Physics backend benchmark | Nov 16 – Dec 6 | 2026-12-06 | Xianda |
+| M0 | Foundations: IR + adapter interfaces | Nov 6 – Nov 15 | 2026-11-15 | Kevin |
+| M1 | First end-to-end removal tuple | Nov 16 – Nov 29 | 2026-11-29 | Kevin |
+| M2 | Physics backend benchmark | Nov 16 – Dec 6 | 2026-12-06 | Kevin |
 | M3 | Video front-end (Stage 1 reconstruction) | Dec 1 – Dec 20 | 2026-12-20 | Kevin |
-| M4 | Scale-out & contributor workflow | Dec 14 – Jan 10 | 2027-01-10 | Kevin + Xianda |
+| M4 | Scale-out & contributor workflow | Dec 14 – Jan 10 | 2027-01-10 | Kevin |
 | M5 | Dataset v0.1 + paper | Jan 4 – Jan 31 | 2027-01-31 | All |
 
 M1 and M2 run in parallel. Holidays (Thanksgiving Nov 26, Dec 24 – Jan 1) are inside M1 and M4, so those windows are longer.
