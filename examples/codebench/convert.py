@@ -20,8 +20,8 @@ OUT = Path(__file__).resolve().parent
 
 APPROXIMATIONS = [
     "Box meshes (8 vertices, or several disjoint 8-vertex boxes) become IR boxes. The non-box static "
-    "meshes Bullet used are kept part by part: the B_01 storage box is 5 boxes; the B_03 gutters are "
-    "5 zero-thickness quads each, which become 1 cm slabs centred on the surface.",
+    "meshes Bullet used are kept part by part: the B_01 storage box is 5 boxes; each B_03 gutter (a "
+    "half-pipe profile extruded along the lane) becomes one 2 cm slab per profile segment, top face on the surface.",
     "B_01 floor becomes an infinite plane at its top face.",
     "B_03 pins (lathe meshes, convex hulls in Bullet) become cylinders r = 0.0605 m, h = 0.381 m, "
     "so their centre of mass sits higher (0.19 m vs about 0.14 m) and their base is wider.",
@@ -55,7 +55,6 @@ def obb(v: np.ndarray) -> tuple[list[float], list[float], list[float]]:
     a1 /= np.linalg.norm(a1)
     R = np.column_stack([a0, a1, np.cross(a0, a1)])  # right-handed
     ext = np.array([np.ptp(v @ R[:, i]) for i in range(3)])
-    ext = np.maximum(ext, 0.01)  # zero-thickness quads (B_03 gutter surface) become 1 cm slabs
     return c.round(6).tolist(), mat_to_quat(R), ext.round(6).tolist()
 
 
@@ -63,6 +62,40 @@ def boxes(v: np.ndarray) -> list[tuple]:
     if len(v) % 8:
         raise ValueError(f"not a set of boxes: {len(v)} vertices")
     return [obb(v[i : i + 8]) for i in range(0, len(v), 8)]
+
+
+def trough(v: np.ndarray, thickness: float = 0.02) -> list[tuple]:
+    """B_03 gutter: a 20-point cross-section profile extruded along x (vertices = both end caps).
+
+    Each profile segment that faces the air (rail top + the half-pipe) becomes a thin slab whose
+    top face lies on the surface. Air side = towards a point above the channel's lowest point.
+    """
+    n = len(v) // 2
+    prof = v[:n, 1:]  # (y, z) at the first end cap
+    x0, x1 = float(v[:, 0].min()), float(v[:, 0].max())
+    low = prof[np.argmin(prof[:, 1])]
+    air = np.array([low[0], prof[:, 1].max() + 0.2])
+    out = []
+    zmax = prof[:, 1].max()
+    for a, b in zip(prof[:-1], prof[1:]):
+        seg = b - a
+        L = float(np.linalg.norm(seg))
+        mid = (a + b) / 2
+        # Skip the block's outer side, bottom and inner (lane-side) wall: only surfaces at the top.
+        if L < 1e-6 or (abs(seg[0]) < 1e-6 and mid[1] < zmax - 1e-6) or mid[1] < low[1] - 1e-6:
+            continue
+        t = seg / L
+        nrm = np.array([-t[1], t[0]])
+        if nrm @ (air - mid) < 0:
+            nrm = -nrm
+        c = mid - nrm * thickness / 2
+        # Local axes: x along the gutter, y along the segment, z = air-side normal.
+        R = np.array([[1.0, 0.0, 0.0], [0.0, t[0], nrm[0]], [0.0, t[1], nrm[1]]])
+        if np.linalg.det(R) < 0:
+            R[:, 1] *= -1
+        out.append(([round((x0 + x1) / 2, 6), round(float(c[0]), 6), round(float(c[1]), 6)], mat_to_quat(R),
+                    [round(x1 - x0, 6), round(L, 6), thickness]))
+    return out
 
 
 def camera(world: Path) -> dict:
@@ -159,8 +192,9 @@ def b03(root: Path) -> dict:
             m = mat(S["floor_friction"], S["wall_restitution"])
         else:
             m = mat(S["lane_friction"], S["lane_restitution"])
-        for i, (c, q, e) in enumerate(boxes(v)):
-            bodies.append(static_box(name if len(v) == 8 else f"{name}_{i}", c, q, e, m))
+        parts = trough(v) if name.startswith("gutter") else boxes(v)
+        for i, (c, q, e) in enumerate(parts):
+            bodies.append(static_box(name if len(parts) == 1 else f"{name}_{i}", c, q, e, m))
     return finish("B_03", bodies, 130, world, "bowling ball strikes a 10-pin rack", S)
 
 

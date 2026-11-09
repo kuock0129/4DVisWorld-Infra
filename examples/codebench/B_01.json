@@ -2684,7 +2684,7 @@
       "start_asleep": false
     },
     "approximations": [
-      "Box meshes (8 vertices, or several disjoint 8-vertex boxes) become IR boxes. The non-box static meshes Bullet used are kept part by part: the B_01 storage box is 5 boxes; the B_03 gutters are 5 zero-thickness quads each, which become 1 cm slabs centred on the surface.",
+      "Box meshes (8 vertices, or several disjoint 8-vertex boxes) become IR boxes. The non-box static meshes Bullet used are kept part by part: the B_01 storage box is 5 boxes; each B_03 gutter (a half-pipe profile extruded along the lane) becomes one 2 cm slab per profile segment, top face on the surface.",
       "B_01 floor becomes an infinite plane at its top face.",
       "B_03 pins (lathe meshes, convex hulls in Bullet) become cylinders r = 0.0605 m, h = 0.381 m, so their centre of mass sits higher (0.19 m vs about 0.14 m) and their base is wider.",
       "Materials: 4DCodeBench set Blender values, which Bullet multiplies per pair. The IR stores value**2, so bullet_blender (IR -> sqrt) reproduces the original pairs exactly; other engines combine pairs by their own rule (MuJoCo max, PhysX average, Newton XPBD average).",
