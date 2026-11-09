@@ -12,7 +12,6 @@ as kinematic; static bodies cannot be overridden.
 
 from __future__ import annotations
 
-import math
 from typing import Any
 
 import numpy as np
@@ -30,6 +29,7 @@ from vw.physics.base import (
 )
 from vw.physics.mujoco_mjcf import MJCFScene, ir_to_mjcf
 from vw.physics.stubs import _AdapterBase
+from vw.physics.util import effective_timestep, interp_pose as _interp_pose, quat_to_mat as _quat_to_mat
 from vw.registry import register_physics
 
 _OPTION_KEYS = ("integrator", "solver", "iterations", "cone", "tolerance", "noslip_iterations")
@@ -41,39 +41,6 @@ def _import_mujoco():
     except ImportError as e:  # pragma: no cover - exercised only without the extra
         raise ImportError("MuJoCo adapter needs the 'mujoco' package: pip install -e '.[mujoco]'") from e
     return mujoco
-
-
-def effective_timestep(requested: float, fps: int) -> tuple[float, int]:
-    """Largest dt <= requested that divides the frame period exactly, and steps per frame."""
-    period = 1.0 / fps
-    n = max(1, math.ceil(period / requested - 1e-9))
-    return period / n, n
-
-
-def _quat_to_mat(q: np.ndarray) -> np.ndarray:
-    w, x, y, z = q
-    return np.array(
-        [
-            [1 - 2 * (y * y + z * z), 2 * (x * y - w * z), 2 * (x * z + w * y)],
-            [2 * (x * y + w * z), 1 - 2 * (x * x + z * z), 2 * (y * z - w * x)],
-            [2 * (x * z - w * y), 2 * (y * z + w * x), 1 - 2 * (x * x + y * y)],
-        ]
-    )
-
-
-def _interp_pose(traj: np.ndarray, f: float) -> tuple[np.ndarray, np.ndarray]:
-    """Pose at fractional frame ``f``: linear position, normalized-lerp quaternion."""
-    T = traj.shape[0]
-    f = min(max(f, 0.0), T - 1)
-    i = min(int(f), T - 2) if T > 1 else 0
-    a = f - i if T > 1 else 0.0
-    p0, p1 = traj[i], traj[min(i + 1, T - 1)]
-    pos = (1 - a) * p0[:3] + a * p1[:3]
-    q0, q1 = p0[3:], p1[3:]
-    if np.dot(q0, q1) < 0:
-        q1 = -q1
-    q = (1 - a) * q0 + a * q1
-    return pos, q / np.linalg.norm(q)
 
 
 @register_physics("mujoco")

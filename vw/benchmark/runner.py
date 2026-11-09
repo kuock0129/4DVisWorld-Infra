@@ -37,6 +37,9 @@ DEFAULT_CONFIGS = [
     BenchConfig("mujoco/rk4/2ms", "mujoco", {"timestep": 0.002, "integrator": "RK4"}),
     BenchConfig("mujoco/euler/2ms/elliptic", "mujoco", {"timestep": 0.002, "cone": "elliptic"}),
     BenchConfig("mujoco/euler/2ms/no-contacts", "mujoco", {"timestep": 0.002, "record_contacts": False}),
+    BenchConfig("bullet/2ms", "bullet_blender", {"timestep": 0.002}),
+    BenchConfig("bullet/0.5ms", "bullet_blender", {"timestep": 0.0005}),
+    BenchConfig("bullet/2ms/50it", "bullet_blender", {"timestep": 0.002, "solver_iterations": 50}),
 ]
 QUICK_CONFIGS = [DEFAULT_CONFIGS[1], DEFAULT_CONFIGS[3]]
 REFERENCE = BenchConfig("mujoco/rk4/0.25ms (reference)", "mujoco", {"timestep": 0.00025, "integrator": "RK4"})
@@ -90,16 +93,25 @@ def run_benchmark(
         "reference": reference.label,
         "configs": [],
     }
+    probe = next(iter(scenes.values()))
     for cfg in configs:
         t0 = time.perf_counter()
-        adapter = registry.get_physics(cfg.backend, device=cfg.device, **cfg.config)
+        try:
+            adapter = registry.get_physics(cfg.backend, device=cfg.device, **cfg.config)
+            problems = adapter.check(probe)
+        except (RuntimeError, ImportError) as e:
+            problems = [str(e)]
+        if problems:
+            log(f"  {cfg.label:34s} skipped: {'; '.join(problems)}")
+            results.setdefault("skipped", []).append({"label": cfg.label, "reason": problems})
+            continue
         cases = analytic.run_suite(adapter)
         cons = {}
         for name, ir in scenes.items():
             native = adapter.compile(ir)
             ts = time.perf_counter()
             sim = adapter.simulate(native)
-            wall = time.perf_counter() - ts
+            wall = analytic.sim_wall(sim, time.perf_counter() - ts)
             div = trajectory_divergence(sim, ref_sims[name])
             cons[name] = {**div.__dict__, "sim_wall_s": wall}
         suite_wall = sum({(c.case, tuple(sorted(c.params.items()))): c.sim_wall_s for c in cases}.values())

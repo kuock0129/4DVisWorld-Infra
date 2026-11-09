@@ -102,14 +102,23 @@ def scene(name: str, bodies: list[dict], duration: float, gravity=(0.0, 0.0, -G)
 REPEATS = 1  # wall-clock = min over this many simulate() calls; the runner raises it
 
 
+def sim_wall(sim: SimResult, measured: float) -> float:
+    """Stepping time: the backend's own figure when it reports one (process-based adapters
+    such as Blender would otherwise be charged their start-up cost), else ``measured``."""
+    return float(sim.backend.solver_config.get("sim_wall_s", measured))
+
+
 def run(adapter: PhysicsAdapter, ir: SceneIR) -> tuple[SimResult, float]:
-    """Compile once, simulate REPEATS times; return the last result and the fastest wall time."""
+    """Compile once, simulate REPEATS times; return the last result and the fastest wall time.
+
+    Adapters with ``single_shot_timing`` (one process per run) are simulated once."""
     native = adapter.compile(ir)
     best = math.inf
-    for _ in range(max(1, REPEATS)):
+    repeats = 1 if getattr(adapter, "single_shot_timing", False) else max(1, REPEATS)
+    for _ in range(repeats):
         t0 = time.perf_counter()
         sim = adapter.simulate(native)
-        best = min(best, time.perf_counter() - t0)
+        best = min(best, sim_wall(sim, time.perf_counter() - t0))
     return sim, best
 
 
