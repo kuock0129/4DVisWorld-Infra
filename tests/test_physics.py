@@ -54,8 +54,8 @@ def test_compatible_physics_routes_example(example_ir):
 
 def test_device_resolution(monkeypatch):
     monkeypatch.setenv("VW_DEVICES", "cuda,cpu")
-    assert registry.get_physics("physx", device="auto").device is Device.CUDA
-    assert registry.get_physics("physx", device="cpu").device is Device.CPU
+    assert registry.get_physics("physx", device="auto").device is Device.CPU  # CPU PhysX only (GPU: newton)
+    assert registry.get_physics("newton", device="auto").device is Device.CUDA
     assert registry.get_physics("newton", device="gpu").device is Device.CUDA
     with pytest.raises(RuntimeError, match="no usable device"):
         registry.get_physics("mujoco", device="gpu")
@@ -66,9 +66,10 @@ def test_unknown_backend():
         registry.get_physics("havok")
 
 
-def test_stub_simulate_is_explicit(example_ir):
+def test_stub_simulate_is_explicit(example_ir, monkeypatch):
+    monkeypatch.setenv("VW_DEVICES", "cuda,cpu")
     with pytest.raises(NotImplementedError, match="stub"):
-        registry.get_physics("physx").compile(example_ir)
+        registry.get_physics("newton").compile(example_ir)
 
 
 def test_compile_refuses_unsupported_loudly(example_ir):

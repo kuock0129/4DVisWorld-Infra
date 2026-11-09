@@ -40,6 +40,10 @@ DEFAULT_CONFIGS = [
     BenchConfig("bullet/2ms", "bullet_blender", {"timestep": 0.002}),
     BenchConfig("bullet/0.5ms", "bullet_blender", {"timestep": 0.0005}),
     BenchConfig("bullet/2ms/50it", "bullet_blender", {"timestep": 0.002, "solver_iterations": 50}),
+    BenchConfig("physx/tgs/2ms", "physx", {"timestep": 0.002}),
+    BenchConfig("physx/tgs/0.5ms", "physx", {"timestep": 0.0005}),
+    BenchConfig("physx/pgs/2ms", "physx", {"timestep": 0.002, "solver": "pgs"}),
+    BenchConfig("physx/tgs/2ms/no-contacts", "physx", {"timestep": 0.002, "record_contacts": False}),
 ]
 QUICK_CONFIGS = [DEFAULT_CONFIGS[1], DEFAULT_CONFIGS[3]]
 REFERENCE = BenchConfig("mujoco/rk4/0.25ms (reference)", "mujoco", {"timestep": 0.00025, "integrator": "RK4"})

@@ -155,9 +155,11 @@ def bounce(adapter: PhysicsAdapter, restitutions=(0.0, 0.3, 0.6, 0.9)) -> list[C
         )
         sim, wall = run(adapter, ir)
         gap = sim.poses["ball"][:, 2] - r  # height of the sphere's bottom
-        first = int(np.argmax(gap <= 0.0)) if np.any(gap <= 0.0) else int(np.argmin(gap))
-        # Rebound apex: highest point after leaving the ground the first time.
-        rebound = float(max(gap[first:].max(), 0.0))
+        # First impact = first local minimum of the height. (Rigid-contact engines never reach
+        # gap <= 0, so a penetration test would miss the impact.)
+        rising = np.diff(gap) > 1e-9
+        first = int(np.argmax(rising)) if rising.any() else len(gap) - 1
+        rebound = float(max(gap[first:].max() - max(gap[first], 0.0), 0.0))
         out.append(CaseResult("bounce", f"rebound height (e={e})", "m", e * e * h, rebound, {"e": e, "h": h}, wall))
     return out
 

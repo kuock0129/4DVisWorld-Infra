@@ -16,6 +16,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=7.4"]
 mujoco = ["mujoco>=3.2"]
+physx = ["sapien>=3.0"]
 bench = ["mujoco>=3.2", "matplotlib>=3.7"]
 
 [project.scripts]
