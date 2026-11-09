@@ -1,0 +1,65 @@
+wrote docs\benchmarks\codebench\bullet\B_01.json
+wrote docs\benchmarks\codebench\bullet\B_01_poses.npz
+{
+  "timing": {
+    "baseline": {
+      "call_s": 3.9429542999714613,
+      "sim_s": 0.45725610002409667
+    },
+    "causal": {
+      "call_s": 3.654629099997692,
+      "sim_s": 0.4937799000181258
+    },
+    "noncausal": {
+      "call_s": 3.6790631000185385,
+      "sim_s": 0.07136069994885474
+    }
+  },
+  "baseline": {
+    "moved": 43,
+    "of": 47,
+    "max_final_displacement": 1.5306792705606216,
+    "max_path_displacement": 1.5306792705606216,
+    "down": [],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 0,
+    "of": 47,
+    "max_final_displacement": 0.0016119897166224535,
+    "max_path_displacement": 0.0016119897166224535,
+    "down": [],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 43,
+    "of": 47,
+    "max_final_displacement": 1.5306792705606216,
+    "max_path_displacement": 1.5306792705606216,
+    "down": [],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": true,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 2.220446049250313e-16,
+    "causal_diverges_from_baseline": 42
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 48,
+    "final_pos_err_mean": 0.3981424190538545,
+    "final_pos_err_median": 0.33736055712424495,
+    "final_pos_err_max": 1.386409975054366,
+    "moved_agreement": 46,
+    "original_moved": 44,
+    "ball_path_err_mean": 0.7174785901070698,
+    "ball_path_err_first_12_frames_max": 0.0033577639971072186,
+    "ball_final_err": 1.386409975054366,
+    "original_down": []
+  }
+}
+
+real	0m11.894s
+user	0m0.000s
+sys	0m0.000s

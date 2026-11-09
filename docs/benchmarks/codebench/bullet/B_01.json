@@ -1,0 +1,77 @@
+{
+  "case": "B_01",
+  "backend": "bullet_blender",
+  "version": "blender-4.0.2",
+  "device": "cpu",
+  "solver_config": {
+    "timestep": 0.001984126984126984,
+    "timestep_requested": 0.002,
+    "substeps": 21,
+    "solver_iterations": 10,
+    "split_impulse": false,
+    "collision_margin": 0.001,
+    "scene_fps": 24,
+    "time_scale": 1.0,
+    "contacts": "unavailable"
+  },
+  "frames": 105,
+  "fps": 24,
+  "target": "ball",
+  "timing": {
+    "baseline": {
+      "call_s": 3.9778412000159733,
+      "sim_s": 0.4229914000025019
+    },
+    "causal": {
+      "call_s": 3.429017100017518,
+      "sim_s": 0.415791800012812
+    },
+    "noncausal": {
+      "call_s": 3.470771500025876,
+      "sim_s": 0.06402809999417514
+    }
+  },
+  "baseline": {
+    "moved": 43,
+    "of": 47,
+    "max_final_displacement": 1.7039622990179604,
+    "max_path_displacement": 1.7039623404149893,
+    "down": [],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 0,
+    "of": 47,
+    "max_final_displacement": 0.0016119897166224535,
+    "max_path_displacement": 0.0016119897166224535,
+    "down": [],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 43,
+    "of": 47,
+    "max_final_displacement": 1.7039622990179604,
+    "max_path_displacement": 1.7039623404149893,
+    "down": [],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": true,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 2.220446049250313e-16,
+    "causal_diverges_from_baseline": 43
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 48,
+    "final_pos_err_mean": 0.19807012123569848,
+    "final_pos_err_median": 0.12581147904459675,
+    "final_pos_err_max": 0.7705970053904816,
+    "moved_agreement": 48,
+    "original_moved": 44,
+    "ball_path_err_mean": 0.23861594696967348,
+    "ball_path_err_first_12_frames_max": 0.004396561687970301,
+    "ball_final_err": 0.47545972098089034,
+    "original_down": []
+  }
+}

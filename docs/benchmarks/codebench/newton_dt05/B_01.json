@@ -1,0 +1,77 @@
+{
+  "case": "B_01",
+  "backend": "newton",
+  "version": "1.7.0 (warp 1.19.0)",
+  "device": "cuda",
+  "solver_config": {
+    "solver": "xpbd",
+    "timestep": 0.000496031746031746,
+    "timestep_requested": 0.0005,
+    "steps_per_frame": 84,
+    "iterations": 8,
+    "cuda_graph": true,
+    "worlds": 1,
+    "deterministic": true,
+    "contacts": "not recorded"
+  },
+  "frames": 105,
+  "fps": 24,
+  "target": "ball",
+  "timing": {
+    "baseline": {
+      "call_s": 52.51597330003278,
+      "sim_s": 47.26296226020215
+    },
+    "causal": {
+      "call_s": 50.58457010000711,
+      "sim_s": 47.834466594185464
+    },
+    "noncausal": {
+      "call_s": 55.50796060002176,
+      "sim_s": 47.045070345658196
+    }
+  },
+  "baseline": {
+    "moved": 4,
+    "of": 47,
+    "max_final_displacement": 0.31627022742964167,
+    "max_path_displacement": 0.31629155076246407,
+    "down": [],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 0,
+    "of": 47,
+    "max_final_displacement": 0.0019308486968828394,
+    "max_path_displacement": 0.001932326656112601,
+    "down": [],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 4,
+    "of": 47,
+    "max_final_displacement": 0.31627022742964167,
+    "max_path_displacement": 0.31629155076246407,
+    "down": [],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": true,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 0.0,
+    "causal_diverges_from_baseline": 4
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 48,
+    "final_pos_err_mean": 0.7268686103052792,
+    "final_pos_err_median": 0.7430855423505881,
+    "final_pos_err_max": 1.6392546775737245,
+    "moved_agreement": 9,
+    "original_moved": 44,
+    "ball_path_err_mean": 0.7789369430401438,
+    "ball_path_err_first_12_frames_max": 0.08608906218080206,
+    "ball_final_err": 1.326095836772282,
+    "original_down": []
+  }
+}

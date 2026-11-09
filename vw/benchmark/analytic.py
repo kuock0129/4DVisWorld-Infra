@@ -6,7 +6,8 @@ gives BOTH bodies in a contact the same friction / restitution, so the result do
 not depend on whether a backend combines pairs by max, mean or product (see the
 benchmark report for why this is still an open IR question).
 
-Pendulum period is not included: IR v0.1 has no joints.
+Pendulum period is not included: IR v0.1 has no joints. ``roll`` checks that rolling
+contact does not lose energy.
 """
 
 from __future__ import annotations
@@ -224,12 +225,28 @@ def collision(adapter: PhysicsAdapter, restitutions=(1.0, 0.5)) -> list[CaseResu
     return out
 
 
+def roll(adapter: PhysicsAdapter, v0: float = 2.0) -> list[CaseResult]:
+    """Sphere rolling without slipping (v = omega r) on the ground keeps its speed.
+
+    Rolling friction is not part of IR v0.1, so the expected speed after 1 s is v0. This case
+    catches solvers that drain energy from rolling contact (see the 4DCodeBench Newton report).
+    """
+    r = 0.1
+    ball = _sphere("ball", (0, 0, r), radius=r, vel=(v0, 0, 0))
+    ball["initial_angular_velocity"] = [0.0, v0 / r, 0.0]
+    ir = scene("roll", [_ground(), ball], 1.0)
+    sim, wall = run(adapter, ir)
+    speed = float(np.linalg.norm(sim.velocities["ball"][-1, :2]))
+    return [CaseResult("roll", "rolling speed after 1 s", "m/s", v0, speed, {"v0": v0}, wall)]
+
+
 CASES: dict[str, Callable[[PhysicsAdapter], list[CaseResult]]] = {
     "free_fall": free_fall,
     "bounce": bounce,
     "slide": slide,
     "stack": stack,
     "collision": collision,
+    "roll": roll,
 }
 
 

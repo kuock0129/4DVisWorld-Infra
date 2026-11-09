@@ -77,6 +77,21 @@ def to_markdown(res: dict[str, Any]) -> str:
     for s in scenes:
         lines.append("| " + " | ".join([s] + [f"{c['consistency'][s]['sim_wall_s']:.3f}" for c in cfgs]) + " |")
     lines += ["", "![Error vs wall-clock](error_vs_walltime.png)", ""]
+    tp = res.get("throughput")
+    if tp and tp["rows"]:
+        worlds = sorted({r["worlds"] for r in tp["rows"]})
+        labels_tp = list(dict.fromkeys(r["label"] for r in tp["rows"]))
+        lines += ["## CPU vs GPU throughput", "",
+                  f"Scene `{tp['scene']}` ({tp['frames']} frames), N independent copies. "
+                  "Cells: world-steps per second (simulation only, no contact recording).", "",
+                  "| Config | " + " | ".join(f"N={w}" for w in worlds) + " |", "|---|" + "---|" * len(worlds)]
+        for lab in labels_tp:
+            cells = []
+            for w in worlds:
+                r = next((r for r in tp["rows"] if r["label"] == lab and r["worlds"] == w), None)
+                cells.append(f"{r['world_steps_per_s']:,.0f}" if r else "")
+            lines.append(f"| {lab} | " + " | ".join(cells) + " |")
+        lines.append("")
     return "\n".join(lines)
 
 

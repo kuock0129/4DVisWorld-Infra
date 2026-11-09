@@ -1,0 +1,98 @@
+wrote docs\benchmarks\codebench\bullet\B_03.json
+wrote docs\benchmarks\codebench\bullet\B_03_poses.npz
+{
+  "timing": {
+    "baseline": {
+      "call_s": 3.8834743999759667,
+      "sim_s": 0.3022321999887936
+    },
+    "causal": {
+      "call_s": 3.331179599976167,
+      "sim_s": 0.205656599951908
+    },
+    "noncausal": {
+      "call_s": 3.3548019000445493,
+      "sim_s": 0.05060770001728088
+    }
+  },
+  "baseline": {
+    "moved": 10,
+    "of": 10,
+    "max_final_displacement": 1.692619519124489,
+    "max_path_displacement": 1.743731833518407,
+    "down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C1",
+      "pin_C2",
+      "pin_D1"
+    ],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 4,
+    "of": 10,
+    "max_final_displacement": 0.7119407423093375,
+    "max_path_displacement": 0.8455840282292463,
+    "down": [
+      "pin_A4",
+      "pin_B3",
+      "pin_C2",
+      "pin_D1"
+    ],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 10,
+    "of": 10,
+    "max_final_displacement": 1.692619519124489,
+    "max_path_displacement": 1.743731833518407,
+    "down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C1",
+      "pin_C2",
+      "pin_D1"
+    ],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": false,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 2.220446049250313e-16,
+    "causal_diverges_from_baseline": 10
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 11,
+    "final_pos_err_mean": 0.4669833230812614,
+    "final_pos_err_median": 0.3000759611006765,
+    "final_pos_err_max": 1.1570943630754766,
+    "moved_agreement": 10,
+    "original_moved": 10,
+    "ball_path_err_mean": 0.35222845269706776,
+    "ball_path_err_first_12_frames_max": 2.2412315193384547e-05,
+    "ball_final_err": 0.26799005617696964,
+    "original_down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C1",
+      "pin_C2"
+    ]
+  }
+}

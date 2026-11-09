@@ -86,6 +86,7 @@ def run_benchmark(
     example: Path | None = Path("examples/remove_support.json"),
     repeats: int = 3,
     log=print,
+    throughput: bool = False,
 ) -> dict[str, Any]:
     configs = configs or DEFAULT_CONFIGS
     analytic.REPEATS = repeats
@@ -136,4 +137,9 @@ def run_benchmark(
             }
         )
         log(f"  {cfg.label:34s} suite sim {suite_wall:6.2f}s  (total {time.perf_counter() - t0:5.1f}s)")
+    if throughput:
+        from vw.benchmark.throughput import run_throughput
+
+        log("throughput (tumble scene, N independent worlds)")
+        results["throughput"] = run_throughput(scenes["tumble"], log=log)
     return results

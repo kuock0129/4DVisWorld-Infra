@@ -1,0 +1,91 @@
+{
+  "case": "B_03",
+  "backend": "newton",
+  "version": "1.7.0 (warp 1.19.0)",
+  "device": "cpu",
+  "solver_config": {
+    "solver": "xpbd",
+    "timestep": 0.001984126984126984,
+    "timestep_requested": 0.002,
+    "steps_per_frame": 21,
+    "iterations": 8,
+    "cuda_graph": false,
+    "worlds": 1,
+    "deterministic": true,
+    "contacts": "not recorded"
+  },
+  "frames": 130,
+  "fps": 24,
+  "target": "ball",
+  "timing": {
+    "baseline": {
+      "call_s": 14.969953700026963,
+      "sim_s": 6.659940042188737
+    },
+    "causal": {
+      "call_s": 6.926452099985909,
+      "sim_s": 6.603023327350911
+    },
+    "noncausal": {
+      "call_s": 7.4639113000012,
+      "sim_s": 6.985322990645727
+    }
+  },
+  "baseline": {
+    "moved": 6,
+    "of": 10,
+    "max_final_displacement": 0.5659074449118313,
+    "max_path_displacement": 0.5659074449118313,
+    "down": [
+      "pin_B3"
+    ],
+    "contacts": 0
+  },
+  "causal": {
+    "moved": 0,
+    "of": 10,
+    "max_final_displacement": 0.0015419587468803986,
+    "max_path_displacement": 0.0015419587468803986,
+    "down": [],
+    "contacts": 0
+  },
+  "noncausal": {
+    "moved": 6,
+    "of": 10,
+    "max_final_displacement": 0.5659074449118313,
+    "max_path_displacement": 0.5659074449118313,
+    "down": [
+      "pin_B3"
+    ],
+    "contacts": 0
+  },
+  "checks": {
+    "causal_is_static": true,
+    "noncausal_replays_baseline": true,
+    "noncausal_max_diff": 0.0,
+    "causal_diverges_from_baseline": 5
+  },
+  "vs_original_bullet": {
+    "available": true,
+    "bodies": 11,
+    "final_pos_err_mean": 0.6593792525920885,
+    "final_pos_err_median": 0.6789600197727862,
+    "final_pos_err_max": 1.115998056513203,
+    "moved_agreement": 8,
+    "original_moved": 10,
+    "ball_path_err_mean": 1.7474645757567364,
+    "ball_path_err_first_12_frames_max": 1.3126816749572754,
+    "ball_final_err": 0.4972814892673933,
+    "original_down": [
+      "pin_A1",
+      "pin_A2",
+      "pin_A3",
+      "pin_A4",
+      "pin_B1",
+      "pin_B2",
+      "pin_B3",
+      "pin_C1",
+      "pin_C2"
+    ]
+  }
+}

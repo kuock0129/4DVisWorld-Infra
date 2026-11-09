@@ -77,8 +77,8 @@ class BlenderJob:
 @register_physics("bullet_blender")
 class BulletBlenderAdapter(_AdapterBase):
     """Config: timestep (s, default 0.002; sets substeps per frame), solver_iterations
-    (default 10, Blender's default), split_impulse (bool), collision_margin (m, default
-    Blender's per-shape default), blender (path to the executable), timeout (s)."""
+    (default 10, Blender's default), split_impulse (bool), collision_margin (m, default 0.001;
+    Blender's own 0.04 m default breaks contacts between cylinders and thin boxes), blender (path to the executable), timeout (s)."""
 
     name = "bullet_blender"
     capabilities = Capabilities(frozenset({Feature.RIGID, Feature.KINEMATIC}), frozenset({Device.CPU}))
@@ -110,7 +110,8 @@ class BulletBlenderAdapter(_AdapterBase):
             "substeps": n,
             "solver_iterations": int(self.config.get("solver_iterations", 10)),
             "split_impulse": bool(self.config.get("split_impulse", False)),
-            "collision_margin": self.config.get("collision_margin"),
+            # Blender's own default margin (0.04 m) makes thin boxes push cylinders away: use 1 mm.
+            "collision_margin": float(self.config.get("collision_margin", 0.001)),
         }
         return BlenderJob(ir, cfg)
 
