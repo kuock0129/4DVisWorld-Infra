@@ -17,6 +17,7 @@ dependencies = [
 dev = ["pytest>=7.4"]
 mujoco = ["mujoco>=3.2"]
 physx = ["sapien>=3.0"]
+newton = ["newton>=1.7", "warp-lang>=1.17"]  # solver=mujoco also needs mujoco-warp~=3.15 (and mujoco~=3.15)
 bench = ["mujoco>=3.2", "matplotlib>=3.7"]
 
 [project.scripts]

@@ -44,6 +44,10 @@ DEFAULT_CONFIGS = [
     BenchConfig("physx/tgs/0.5ms", "physx", {"timestep": 0.0005}),
     BenchConfig("physx/pgs/2ms", "physx", {"timestep": 0.002, "solver": "pgs"}),
     BenchConfig("physx/tgs/2ms/no-contacts", "physx", {"timestep": 0.002, "record_contacts": False}),
+    BenchConfig("newton/xpbd/2ms/cuda", "newton", {"timestep": 0.002}, device="cuda"),
+    BenchConfig("newton/xpbd/2ms/cuda/nondet", "newton", {"timestep": 0.002, "deterministic": False}, device="cuda"),
+    BenchConfig("newton/xpbd/2ms/cpu", "newton", {"timestep": 0.002}, device="cpu"),
+    BenchConfig("newton/mujoco-warp/2ms/cuda", "newton", {"timestep": 0.002, "solver": "mujoco"}, device="cuda"),
 ]
 QUICK_CONFIGS = [DEFAULT_CONFIGS[1], DEFAULT_CONFIGS[3]]
 REFERENCE = BenchConfig("mujoco/rk4/0.25ms (reference)", "mujoco", {"timestep": 0.00025, "integrator": "RK4"})
